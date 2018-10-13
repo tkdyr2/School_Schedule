@@ -3,9 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <!-- ToolBar 배경색-->
+        <item name="colorPrimary">@color/origin_grayGreen</item>
+        <item name="colorPrimaryDark">@color/origin_deepBlue</item>
+        <!-- ToolBar 타이틀 텍스트 색 -->
+        <item name="android:textColorPrimary">@color/white</item>
 
     </style>
 

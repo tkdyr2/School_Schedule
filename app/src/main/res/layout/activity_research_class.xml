@@ -1,9 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/origin_backGray"
     tools:context=".ResearchClassActivity">
 
-</android.support.constraint.ConstraintLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <Spinner
+        android:id="@+id/spi_major"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" />
+
+    <Spinner
+        android:id="@+id/spi_kindOfClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" />
+
+    <Spinner
+        android:id="@+id/spi_grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:ems="10"
+        android:hint="강좌명으로 검색"
+        android:inputType="textPersonName" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="15dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cB_Mon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="월공강"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/cB_Fri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="금공강"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/cB_pm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="오후수업"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_research"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/menu_button_simu_state"
+        android:onClick="onResearchButtonClick"
+        android:padding="5dp"
+        android:text="조회"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/class_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"></ListView>
+
+    <Button
+        android:id="@+id/btn_bucket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/menu_button_simu_state"
+        android:padding="5dp"
+        android:text="장바구니"
+        android:onClick="onBucketButtonClick"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+
+</LinearLayout>
+</ScrollView>
+

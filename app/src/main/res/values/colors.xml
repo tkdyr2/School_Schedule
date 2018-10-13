@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="origin_liteGray">#c1c1c1</color>
+    <color name="origin_grayGreen">#62929a</color>
+    <color name="origin_deepBlue">#4c5b7c</color>
+    <color name="origin_backGray">#5c5757</color>
+    <color name="origin_lineColor">#df8e8e</color>
+    <color name="white">#ffffff</color>
 </resources>

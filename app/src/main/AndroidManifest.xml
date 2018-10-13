@@ -17,9 +17,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuActivity" />
-        <activity android:name=".ScheduleResultActivity" />
-        <activity android:name=".ResearchClassActivity" />
-        <activity android:name=".BucketActivity"></activity>
+        <activity
+            android:name=".ScheduleResultActivity"
+            android:label="@string/result_frame_name" />
+        <activity
+            android:name=".ResearchClassActivity"
+            android:label="@string/research_frame_name"/>
+        <activity
+            android:name=".BucketActivity"
+            android:label="@string/bucket_frame_name"></activity>
     </application>
 
 </manifest>

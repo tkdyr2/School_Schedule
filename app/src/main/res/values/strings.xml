@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">SchoolSchedule</string>
+    <string name="result_frame_name">시뮬레이션 결과 시간표</string>
+    <string name="research_frame_name">과목검색</string>
+    <string name="bucket_frame_name">장바구니</string>
+
+    <string-array name="spi_major_array">
+        <item>정공</item>
+        <item>컴퓨터공학부</item>
+    </string-array>
+
+    <string-array name="spi_kindOfClass_array">
+        <item>이수구분</item>
+        <item>전선</item>
+        <item>전필</item>
+    </string-array>
+
+    <string-array name="spi_grade_array">
+        <item>학년</item>
+        <item>1학년</item>
+        <item>2학년</item>
+        <item>3학년</item>
+        <item>4학년</item>
+    </string-array>
+
 </resources>

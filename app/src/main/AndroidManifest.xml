@@ -9,23 +9,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuActivity" />
+        <activity
+            android:name=".MenuActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ScheduleResultActivity"
-            android:label="@string/result_frame_name" />
+            android:label="@string/result_frame_name"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ResearchClassActivity"
-            android:label="@string/research_frame_name"/>
+            android:label="@string/research_frame_name"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BucketActivity"
-            android:label="@string/bucket_frame_name"></activity>
+            android:label="@string/bucket_frame_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".BeforeResultActivity"
+            android:label="@string/before_frame_result"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

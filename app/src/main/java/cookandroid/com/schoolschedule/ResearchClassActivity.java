@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -53,7 +54,7 @@ public class ResearchClassActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_research:
 
-                // ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
+                //region ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
                 Item items = new Item("dummyData");
                 items.add_Items_array("더미 데이터 1");
                 items.add_Items_array("더미 데이터 2");
@@ -69,8 +70,17 @@ public class ResearchClassActivity extends AppCompatActivity {
                 ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items.getItems_array());
 
                 // ListView에게 ArrayAdapter를 성정한다
-                ListView class_list_view = (ListView) findViewById(R.id.class_list);
-                class_list_view.setAdapter(adapter);
+                NonScrollListView classListView = (NonScrollListView) findViewById(R.id.nonScrollListView1);
+                classListView.setAdapter(adapter);
+                //endregion
+
+                //region 숨긴 장바구니 버튼 표시
+                Button btn_bucket = (Button)this.findViewById(R.id.btn_bucket);
+                if (btn_bucket.getVisibility() == View.INVISIBLE) {
+                    btn_bucket.setVisibility(View.VISIBLE);
+                }
+                //endregion
+
                 break;
         }
     }

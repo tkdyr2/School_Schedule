@@ -36,13 +36,6 @@ public class BucketActivity extends AppCompatActivity {
     public void onSimuButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_simu:
-
-                // ~~~~~~~~~여기에서 시뮬레이션 메서드 호출~~~~~~~~~~`
-
-
-                // ~~~~~~~~시뮬레이션 결과를 결과화면에 넘기고 표시~~~~~~~~~
-                // 일시적으로 더미 변수를 대충 써놓을게요
-                // 요일은 월~금까지 5개, 교시는 0교시~13교시까지 14 개 니까 5×14의 2차배열로 모든 교시의 과목을 표현 가능
                 int numWeek = 5, classTime = 14;
                 ArrayList<ArrayList<String>> classList = new ArrayList<>(); // 첫번째 배열 (교시)
                 ArrayList<String> week = new ArrayList<String>(); // 두번째 배열 (요일)

@@ -66,3 +66,14 @@ public class MainActivity extends AppCompatActivity {
     //endregion
 
 }
+
+
+   /* public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_UP:
+                Intent menuIntent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(menuIntent);
+                break;
+        }
+        return false;
+    } */

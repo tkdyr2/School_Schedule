@@ -3,6 +3,7 @@ package cookandroid.com.schoolschedule;
 import android.app.Activity;
 import android.app.backup.BackupHelper;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -67,11 +69,21 @@ public class ResearchClassActivity extends AppCompatActivity {
                 items.add_Items_array("더미 데이터 9");
 
                 // List항목과 ListView를 대응 시키는 ArrayAdapter를 준비
-                ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items.getItems_array());
+                final ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items.getItems_array());
 
                 // ListView에게 ArrayAdapter를 성정한다
                 NonScrollListView classListView = (NonScrollListView) findViewById(R.id.nonScrollListView1);
                 classListView.setAdapter(adapter);
+
+                // ListView의 Item를 클릭하면 선택 중인 상태로 하기
+                classListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int pos, long ld) {
+                        String selectedClassInfo = (String) parent.getItemAtPosition(pos);
+                        //Toast.makeText(ResearchClassActivity.this,selectedClassInfo,Toast.LENGTH_LONG).show();
+                    }
+                });
+
                 //endregion
 
                 //region 숨긴 장바구니 버튼 표시

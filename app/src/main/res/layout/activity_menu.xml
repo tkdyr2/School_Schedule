@@ -34,7 +34,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/menu_button_result_state"
         android:padding="15dp"
-        android:text="이전의 결과"
+        android:text="나의 시간표"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="36sp"

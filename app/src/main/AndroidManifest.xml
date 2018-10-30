@@ -14,6 +14,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,6 +33,12 @@
             android:name=".BucketActivity"
             android:label="@string/bucket_frame_name"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyScheduleActivity"
+            android:label="@string/my_frame_result"
+            android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>

@@ -32,10 +32,6 @@
             android:name=".BucketActivity"
             android:label="@string/bucket_frame_name"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".MyResultActivity"
-            android:label="@string/my_frame_result"
-            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

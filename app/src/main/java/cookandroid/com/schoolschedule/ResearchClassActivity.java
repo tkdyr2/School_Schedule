@@ -3,6 +3,7 @@ package cookandroid.com.schoolschedule;
 import android.app.Activity;
 import android.app.backup.BackupHelper;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,9 +16,15 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class ResearchClassActivity extends AppCompatActivity {
+
+    public String category, target_grade, condition_mon, condition_fri, condition_pm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +57,77 @@ public class ResearchClassActivity extends AppCompatActivity {
 
     }
 
+    //region Read JSON file(dummy data)
+    public String loadJSONFromRaw(){
+        Resources res = this.getResources();
+        String json = null;
+        InputStream is;
+        BufferedReader br;
+        try{
+            is = res.openRawResource(R.raw.subject_data);
+            br = new BufferedReader(new InputStreamReader(is));
+            String str;
+            while((str = br.readLine())!=null){
+                json += str + "\n";
+            }
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+            Toast.makeText(this, "Json File Loading Fault!",Toast.LENGTH_SHORT).show();
+        }
+        return json;
+    }
+
+    //endregion
+
+
 
     // 조회 버튼 동작
     public void onResearchButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_research:
+
+            String loadedJson = loadJSONFromRaw();
+
+
+            //region get Users input data
+
+            // Spinner Object를 취득
+            Spinner kind_spinner = (Spinner) findViewById(R.id.spi_kindOfClass); //이수구분
+            Spinner grade_spinner = (Spinner) findViewById(R.id.spi_grade); //학년
+
+            // 선택되어있는 아이템의 Index를 취득
+                int classKind_idx = kind_spinner.getSelectedItemPosition();
+                switch (classKind_idx){
+                    case 0:
+                        category = ""; // 선택 안함
+                        break;
+                    case 1:
+                        category = "전선"; // 전선 선택
+                        break;
+                    case 2:
+                        category = "전필"; // 전필 선택
+                    case 3:
+                        category = "영어"; //
+                                break;
+                    case 4:
+                        category = "전문ICT"; //
+                        break;
+                    case 5:
+                        category = ""; //
+                        break;
+                    case 6:
+                        category = ""; //
+                        break;
+                }
+//        <item>사제동행세미나</item>
+//        <item>학기</item>
+//        <item>균형3</item>
+
+
+                    // endregion
+
+
 
                 //region ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
                 Item items = new Item("dummyData");

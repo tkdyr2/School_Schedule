@@ -3,6 +3,8 @@ package cookandroid.com.schoolschedule;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class SearchClasses {
@@ -10,31 +12,34 @@ public class SearchClasses {
     // String majors, kindOfClass, grade, classNsme;
     // int[] reqFlag = {0,0,0}; // reqFlag[0] = Mon, reqFlag[1] = Fri, reqFlag[2] = PM
 
+    private String title, serial, room, professor, category, major, grade, point, when, where, limit;
 
-    public void perseJSON() {
+    public void parseJSON(ArrayList<String> hoge) {
         try {
-            JSONArray jsons = new JSONArray();
+            JSONArray jsons = new JSONArray(hoge);
             for (int i = 0; i < jsons.length(); i++) {
                 JSONObject jsonRslt = jsons.getJSONObject(i);
-                String title = jsonRslt.getString("title");
-                String serial = jsonRslt.getString("serial");
-                String room = jsonRslt.getString("room");
-                String professer = jsonRslt.getString("professer");
-                String category = jsonRslt.getString("category");
-                String major = jsonRslt.getString("major");
-                String grade = jsonRslt.getString("grade");
-                String point = jsonRslt.getString("point");
-                String when = jsonRslt.getString("when");
-                String where = jsonRslt.getString("where");
-                String limit = jsonRslt.getString("limit");
+                this.title = jsonRslt.getString("title");
+                this.serial = jsonRslt.getString("serial");
+                this.room = jsonRslt.getString("room");
+                this.professor = jsonRslt.getString("professor");
+                this.category = jsonRslt.getString("category");
+                this.major = jsonRslt.getString("major");
+                this.grade = jsonRslt.getString("grade");
+                this.point = jsonRslt.getString("point");
+                this.when = jsonRslt.getString("when");
+                this.where = jsonRslt.getString("where");
+                this.limit = jsonRslt.getString("limit");
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
+    public String getGrade(){
+        return this.grade;
+    }
 
 
 

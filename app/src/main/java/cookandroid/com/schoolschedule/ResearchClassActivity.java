@@ -1,20 +1,21 @@
 package cookandroid.com.schoolschedule;
 
-import android.app.Activity;
-import android.app.backup.BackupHelper;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,25 +58,38 @@ public class ResearchClassActivity extends AppCompatActivity {
 
     }
 
-    //region Read JSON file(dummy data)
-    public String loadJSONFromRaw(){
-        Resources res = this.getResources();
-        String json = null;
-        InputStream is;
-        BufferedReader br;
-        try{
-            is = res.openRawResource(R.raw.subject_data);
-            br = new BufferedReader(new InputStreamReader(is));
-            String str;
-            while((str = br.readLine())!=null){
-                json += str + "\n";
+    //region  JSON파일 읽기
+    public void loadJSONFromRaw(){
+        AssetManager assetManager = getResources().getAssets();
+        AssetFileDescriptor afd = null;
+        InputStream is = null;
+        BufferedReader bf = null;
+        try {
+            // JSON파일 읽기
+            is = assetManager.open("subject_data.json");
+            bf = new BufferedReader(new InputStreamReader(is));
+
+            ArrayList<String> jsonArray = new ArrayList<>();
+            String str = bf.readLine();
+            while(str != null){
+ //               System.out.println(str);
+                str = bf.readLine();
+                jsonArray.add(str);
             }
+            is.close();
+            bf.close();
+            System.out.println(is);
+            SearchClasses searchClasses = new SearchClasses();
+            //searchClasses.parseJSON(jsonArray);
+            //Toast.makeText(this,searchClasses.getGrade(),Toast.LENGTH_LONG).show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch (IOException ex){
-            ex.printStackTrace();
-            Toast.makeText(this, "Json File Loading Fault!",Toast.LENGTH_SHORT).show();
-        }
-        return json;
+
+
+//        String jsonString = "";//writer.toString();
+//        return jsonString;
     }
 
     //endregion
@@ -87,7 +101,7 @@ public class ResearchClassActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_research:
 
-            String loadedJson = loadJSONFromRaw();
+            loadJSONFromRaw();
 
 
             //region get Users input data

@@ -55,7 +55,7 @@ public class BucketActivity extends AppCompatActivity {
                     classList.add(week);
                 }
 
-                Intent scheduleResultIntent = new Intent(BucketActivity.this, ScheduleResultActivity.class);
+                Intent scheduleResultIntent = new Intent(BucketActivity.this, MyScheduleActivity.class);
                 scheduleResultIntent.putExtra("resultSchedule", classList);
                 startActivity(scheduleResultIntent);
                 break;

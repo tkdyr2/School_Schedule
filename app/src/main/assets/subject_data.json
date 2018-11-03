@@ -1,5 +1,4 @@
-{"classes":[
-  {
+[{
     "title": "English Reading and Writing I",
     "serial": "053510",
     "room": "18",
@@ -858,19 +857,6 @@
     "limit": "30"
   },
   {
-    "title": "",
-    "serial": "",
-    "room": "",
-    "professor": "",
-    "category": "전선",
-    "major": "컴퓨터공학부",
-    "grade": "컴퓨터공학(2-4학년)3학년",
-    "point": "3",
-    "when": "",
-    "where": "인문",
-    "limit": ""
-  },
-  {
     "title": "산업경제와창업(창업)",
     "serial": "246016",
     "room": "11",
@@ -921,5 +907,4 @@
     "when": "월6,7,8",
     "where": "인문436",
     "limit": "40"
-  }
-]}
+  }]

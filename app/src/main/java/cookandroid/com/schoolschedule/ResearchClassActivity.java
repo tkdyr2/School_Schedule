@@ -58,51 +58,46 @@ public class ResearchClassActivity extends AppCompatActivity {
 
     }
 
-    //region  JSON파일 읽기
-    public void loadJSONFromRaw(){
-        AssetManager assetManager = getResources().getAssets();
-        AssetFileDescriptor afd = null;
-        InputStream is = null;
-        BufferedReader bf = null;
-        try {
-            // JSON파일 읽기
-            is = assetManager.open("subject_data.json");
-            bf = new BufferedReader(new InputStreamReader(is));
-
-            ArrayList<String> jsonArray = new ArrayList<>();
-            String str = bf.readLine();
-            while(str != null){
- //               System.out.println(str);
-                str = bf.readLine();
-                jsonArray.add(str);
-            }
-            is.close();
-            bf.close();
-            System.out.println(is);
-            SearchClasses searchClasses = new SearchClasses();
-            //searchClasses.parseJSON(jsonArray);
-            //Toast.makeText(this,searchClasses.getGrade(),Toast.LENGTH_LONG).show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-//        String jsonString = "";//writer.toString();
-//        return jsonString;
-    }
-
-    //endregion
-
 
 
     // 조회 버튼 동작
     public void onResearchButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_research:
+                //ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
+                Item items = new Item("title");
 
-            loadJSONFromRaw();
+                //region JSON파일 읽기
+                AssetManager assetManager = getResources().getAssets(); // asset Folder안에 있는 파일을 취득하기 위한 인스탄스
+                InputStream is = null; // text파일을 읽기 위한 인스탄스
+                BufferedReader bf = null; // 한글자씩이 아니라 한줄씩 읽기 위한 인스탄스
+                try {
+                    // JSON파일 읽기
+                    is = assetManager.open("subject_data.json"); // asset 내에 있는 JSON파일 취득
+                    bf = new BufferedReader(new InputStreamReader(is)); //JSON파일 읽기
+                    String jsonString = "";
+                    String str = bf.readLine();
+                    while(str != null){
+                        jsonString += str;
+                        str = bf.readLine();
+                    }
+                    is.close();
+                    bf.close();
+                    SearchClasses searchClasses = new SearchClasses();
+                    searchClasses.parseJSON(jsonString);
 
+                    for(int i = 0; i < searchClasses.getNumClasses(); i++){
+                        items.add_Items_array(searchClasses.getTitle(i));
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+            // endregion
 
             //region get Users input data
 
@@ -143,17 +138,6 @@ public class ResearchClassActivity extends AppCompatActivity {
 
 
 
-                //region ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
-                Item items = new Item("dummyData");
-                items.add_Items_array("더미 데이터 1");
-                items.add_Items_array("더미 데이터 2");
-                items.add_Items_array("더미 데이터 3");
-                items.add_Items_array("더미 데이터 4");
-                items.add_Items_array("더미 데이터 5");
-                items.add_Items_array("더미 데이터 6");
-                items.add_Items_array("더미 데이터 7");
-                items.add_Items_array("더미 데이터 8");
-                items.add_Items_array("더미 데이터 9");
 
                 // List항목과 ListView를 대응 시키는 ArrayAdapter를 준비
                 final ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items.getItems_array());
@@ -171,7 +155,6 @@ public class ResearchClassActivity extends AppCompatActivity {
                     }
                 });
 
-                //endregion
 
                 //region 숨긴 장바구니 버튼 표시
                 Button btn_bucket = (Button)this.findViewById(R.id.btn_bucket);

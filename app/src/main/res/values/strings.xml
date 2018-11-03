@@ -6,7 +6,6 @@
     <string name="my_frame_result">나의 시간표</string>
 
     <string-array name="spi_major_array">
-        <item>정공</item>
         <item>컴퓨터공학부</item>
     </string-array>
 

@@ -1,20 +1,21 @@
 package cookandroid.com.schoolschedule;
 
-import android.app.Activity;
-import android.app.backup.BackupHelper;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,38 +58,46 @@ public class ResearchClassActivity extends AppCompatActivity {
 
     }
 
-    //region Read JSON file(dummy data)
-    public String loadJSONFromRaw(){
-        Resources res = this.getResources();
-        String json = null;
-        InputStream is;
-        BufferedReader br;
-        try{
-            is = res.openRawResource(R.raw.subject_data);
-            br = new BufferedReader(new InputStreamReader(is));
-            String str;
-            while((str = br.readLine())!=null){
-                json += str + "\n";
-            }
-        }
-        catch (IOException ex){
-            ex.printStackTrace();
-            Toast.makeText(this, "Json File Loading Fault!",Toast.LENGTH_SHORT).show();
-        }
-        return json;
-    }
-
-    //endregion
-
 
 
     // 조회 버튼 동작
     public void onResearchButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_research:
+                //ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
+                Item items = new Item("title");
 
-            String loadedJson = loadJSONFromRaw();
+                //region JSON파일 읽기
+                AssetManager assetManager = getResources().getAssets(); // asset Folder안에 있는 파일을 취득하기 위한 인스탄스
+                InputStream is = null; // text파일을 읽기 위한 인스탄스
+                BufferedReader bf = null; // 한글자씩이 아니라 한줄씩 읽기 위한 인스탄스
+                try {
+                    // JSON파일 읽기
+                    is = assetManager.open("subject_data.json"); // asset 내에 있는 JSON파일 취득
+                    bf = new BufferedReader(new InputStreamReader(is)); //JSON파일 읽기
+                    String jsonString = "";
+                    String str = bf.readLine();
+                    while(str != null){
+                        jsonString += str;
+                        str = bf.readLine();
+                    }
+                    is.close();
+                    bf.close();
+                    SearchClasses searchClasses = new SearchClasses();
+                    searchClasses.parseJSON(jsonString);
 
+                    for(int i = 0; i < searchClasses.getNumClasses(); i++){
+                        items.add_Items_array(searchClasses.getTitle(i));
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+            // endregion
 
             //region get Users input data
 
@@ -129,17 +138,6 @@ public class ResearchClassActivity extends AppCompatActivity {
 
 
 
-                //region ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
-                Item items = new Item("dummyData");
-                items.add_Items_array("더미 데이터 1");
-                items.add_Items_array("더미 데이터 2");
-                items.add_Items_array("더미 데이터 3");
-                items.add_Items_array("더미 데이터 4");
-                items.add_Items_array("더미 데이터 5");
-                items.add_Items_array("더미 데이터 6");
-                items.add_Items_array("더미 데이터 7");
-                items.add_Items_array("더미 데이터 8");
-                items.add_Items_array("더미 데이터 9");
 
                 // List항목과 ListView를 대응 시키는 ArrayAdapter를 준비
                 final ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items.getItems_array());
@@ -157,7 +155,6 @@ public class ResearchClassActivity extends AppCompatActivity {
                     }
                 });
 
-                //endregion
 
                 //region 숨긴 장바구니 버튼 표시
                 Button btn_bucket = (Button)this.findViewById(R.id.btn_bucket);

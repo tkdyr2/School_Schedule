@@ -22,10 +22,6 @@
             android:name=".MenuActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ScheduleResultActivity"
-            android:label="@string/result_frame_name"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ResearchClassActivity"
             android:label="@string/research_frame_name"
             android:screenOrientation="portrait" />

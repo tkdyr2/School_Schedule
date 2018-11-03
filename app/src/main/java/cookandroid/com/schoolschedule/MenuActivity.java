@@ -67,7 +67,7 @@ public class MenuActivity extends AppCompatActivity {
      public void onResultButtonClick(View view){
          switch (view.getId()) {
              case R.id.btn_result:
-                 Intent myResultIntent = new Intent(MenuActivity.this, MyResultActivity.class);
+                 Intent myResultIntent = new Intent(MenuActivity.this, MyScheduleActivity.class);
                  startActivity(myResultIntent);
                  break;
          }

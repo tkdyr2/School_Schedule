@@ -8,9 +8,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class SearchClasses {
-    // TODO 科目のデータ構造体（３次元配列　科目データ×分部屋×科目数）JSON -> SQLite
-//    String majors, kindOfClass, grade, classNsme;
-//    int[] reqFlag = {0,0,0}; // reqFlag[0] = Mon, reqFlag[1] = Fri, reqFlag[2] = PM
+    // TODO 科目のデータ構造体（３次元配列　科目データ×分部屋×科目数）
+
     private int numClasses = 0;
     final int N = 90;
     private String[] title = new String[N];
@@ -24,7 +23,6 @@ public class SearchClasses {
     private String[] when = new String[N];
     private String[] where = new String[N];
     private String[] limit = new String[N];
-//    private String title, serial, room, professor, category, major, grade, point, when, where, limit;
 
     public void parseJSON(String jsonString) {
         try {
@@ -63,10 +61,11 @@ public class SearchClasses {
     public int getNumClasses(){return this.numClasses;}
 
 
-    public ArrayList searchTheClass(String majors, String kindOfClass, String grade, String classNsme, int[] reqFlag){
+    public ArrayList searchTheClass(String target_kindOfClass, String target_grade, int condition_first, int condition_last, int[] reqFlag){
 
+        // 이수구분으로 Sort
 
-
+        // 학년으로 Sort
 
 
 

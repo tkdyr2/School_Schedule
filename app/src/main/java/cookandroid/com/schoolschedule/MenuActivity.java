@@ -63,12 +63,12 @@ public class MenuActivity extends AppCompatActivity {
                 break;
         }
     }
-     // 이전의 결과 버튼 클릭
+     // 나의 시간표 버튼 클릭
      public void onResultButtonClick(View view){
          switch (view.getId()) {
              case R.id.btn_result:
-                 Intent beforeResultIntent = new Intent(MenuActivity.this, BeforeResultActivity.class);
-                 startActivity(beforeResultIntent);
+                 Intent myResultIntent = new Intent(MenuActivity.this, MyScheduleActivity.class);
+                 startActivity(myResultIntent);
                  break;
          }
      }

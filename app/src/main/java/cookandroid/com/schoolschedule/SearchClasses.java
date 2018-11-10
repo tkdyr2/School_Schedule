@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class SearchClasses {
 
-    //region 클래스 필드
     private int numClasses = 0;
     final int N = 90;
     private String[] title = new String[N];
@@ -22,9 +21,10 @@ public class SearchClasses {
     private String[] when = new String[N];
     private String[] where = new String[N];
     private String[] limit = new String[N];
-    //endregion
 
-    // JSON파일 변환
+
+
+    // JSON파일 변환 & setter
     public void parseJSON(String jsonString) {
         try {
             JSONArray jsons = new JSONArray(jsonString);
@@ -47,21 +47,6 @@ public class SearchClasses {
             e.printStackTrace();
         }
     }
-
-    //region 변수값을 취득하기 위한 메서드
-    public String getTitle(int i){return this.title[i];}
-    public String getSerial(int i){return this.serial[i];}
-    public String getRoom(int i){return this.room[i];}
-    public String getProfessor(int i){return this.professor[i];}
-    public String getCategory(int i){return this.category[i];}
-    public String getMajor(int i){return this.major[i];}
-    public String getGrade(int i){return this.grade[i];}
-    public String getPoint(int i){return this.point[i];}
-    public String getWhen(int i){return this.when[i];}
-    public String getWhere(int i){return this.where[i];}
-    public String getLimit(int i){return this.limit[i];}
-    public int getNumClasses(){return this.numClasses;}
-    //endregion
 
     // 과목 검색 메서드
     public ArrayList<String> searchTheClass(String target_category, String target_grade, int time_first, int time_last, int[] reqFlag){
@@ -158,15 +143,32 @@ public class SearchClasses {
         //endregion
 
         for(int i = 0; i < this.numClasses; i++){
-            String tmp = "과목[ " + this.title[i]  + " ] 분방:" + this.room[i]
-                    + " 교수:" + this.professor[i] + " 분류:" + this.category[i] + " "
-                    + this.grade[i] + " " + this.point[i] + "학점 " + this.when[i] + " "
-                    + this.where[i] + " 인원: " + this.limit[i];
-            if(flag[i] >= judgeNum) result.add(tmp);
+            if(flag[i] >= judgeNum) {
+                String tmp = this.title[i]  + "_" + this.serial[i] + "_" + this.room[i] + "_" + this.professor[i] + "_"
+                        + this.category[i] + "_" + this.major[i] +  "_" +this.grade[i] + "_" + this.point[i] + "_"
+                        + this.when[i] + "_" + this.where[i] + "_" + this.limit[i];
+
+                result.add(tmp);
+            }
         }
 
         return result;
     }
+
+    //region getter
+    public String getTitle(int i){return this.title[i];}
+    public String getSerial(int i){return this.serial[i];}
+    public String getRoom(int i){return this.room[i];}
+    public String getProfessor(int i){return this.professor[i];}
+    public String getCategory(int i){return this.category[i];}
+    public String getMajor(int i){return this.major[i];}
+    public String getGrade(int i){return this.grade[i];}
+    public String getPoint(int i){return this.point[i];}
+    public String getWhen(int i){return this.when[i];}
+    public String getWhere(int i){return this.where[i];}
+    public String getLimit(int i){return this.limit[i];}
+    public int getNumClasses(){return this.numClasses;}
+    //endregion
 
 
 

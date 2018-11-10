@@ -132,25 +132,42 @@ public class ResearchClassActivity extends AppCompatActivity {
                 // endregion
 
                 // 과목 검색 메서드 호출
-                final ArrayList<String> tmpArray = searchClasses.searchTheClass(target_category, target_grade, time_first, time_last, reqFlag);
-
-                //ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
-                Item items = new Item("조회 과목");
-                for(int i = 0; i < tmpArray.size(); i++){
-                    items.add_Items_array(tmpArray.get(i));
+                ArrayList<String> tmpArray = searchClasses.searchTheClass(target_category, target_grade, time_first, time_last, reqFlag);
+                ArrayList<ClassData> listData = new ArrayList<>();
+                // ListViewに表示する項目を生成
+                for(int i = 0; i < tmpArray.size(); i++) {
+                    String[] resultArray = tmpArray.get(i).split(",",0);
+                    ClassData data = new ClassData( resultArray[0],  resultArray[1],  resultArray[2],  resultArray[3],  resultArray[4],  resultArray[5],  resultArray[6],  resultArray[7],  resultArray[8],  resultArray[9], resultArray[10]);
+                    listData.add(data);
                 }
 
-                // List항목과 ListView를 대응 시키는 ArrayAdapter를 준비
-                final ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items.getItems_array());
+                // CustomAdapterを生成 (R.layout.listview_layout : (自作)リストビューのレイアウト)
+                MyAdapter customAdapter = new MyAdapter(this, listData, R.layout.listview_layout);
 
-                // ListView에게 ArrayAdapter를 성정한다
-                NonScrollListView classListView = (NonScrollListView) findViewById(R.id.nonScrollListView1);
-                classListView.setAdapter(adapter);
+                // ListViewを取得
+                NonScrollListView myClassListView = (NonScrollListView) findViewById(R.id.nonScrollListView1);
+                myClassListView.setAdapter(customAdapter);
+
+
+
+                //--------------------------------------------------------------------------------------------------------------------
+                //ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
+//                Item items = new Item("조회 과목");
+//                for(int i = 0; i < tmpArray.size(); i++){
+//                    items.add_Items_array(tmpArray.get(i));
+//                }
+//
+//                // List항목과 ListView를 대응 시키는 ArrayAdapter를 준비
+//                final ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items.getItems_array());
+//
+//                // ListView에게 ArrayAdapter를 성정한다
+//                NonScrollListView classListView = (NonScrollListView) findViewById(R.id.nonScrollListView1);
+//                classListView.setAdapter(adapter);
                 //endregion
 
                 final ArrayList<String> bucketArray = new ArrayList<String>();
                 //region ListView의 아이템을 길게 눌렀을때 아이템 배경색 바꾸기
-                classListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                         final int pos = position;

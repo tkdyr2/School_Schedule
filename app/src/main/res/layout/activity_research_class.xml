@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="월공강"
+                android:text="월요일 제외"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="금공강"
+                android:text="금요일 제외"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -123,7 +123,8 @@
         <cookandroid.com.schoolschedule.NonScrollListView
             android:id="@+id/nonScrollListView1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:dividerHeight="10dp"/>
 
         <Button
             android:id="@+id/btn_bucket"
@@ -134,7 +135,7 @@
             android:background="@drawable/menu_button_simu_state"
             android:onClick="onBucketButtonClick"
             android:padding="5dp"
-            android:text="장바구니"
+            android:text="장바구니 확인"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"

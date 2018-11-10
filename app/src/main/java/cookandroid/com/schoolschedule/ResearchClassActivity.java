@@ -1,12 +1,9 @@
 package cookandroid.com.schoolschedule;
 
 import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
-import android.nfc.Tag;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,17 +11,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import static java.lang.System.exit;
 
 public class ResearchClassActivity extends AppCompatActivity {
     SearchClasses searchClasses = new SearchClasses();
@@ -97,9 +89,11 @@ public class ResearchClassActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_research:
 
+                //region 가목조회 및 ListView 표시
+
                 // 유정 입력 값 병수
-                String target_kindOfClass, target_grade, temp_first, temp_last;
-                int condition_first, condition_last;
+                String target_category, target_grade;
+                int time_first, time_last;
                 int[] reqFlag = {0,0}; // reqFlag[0] = 월공강, reqFlag[1] = 금공강
 
                 //region 유저입력 값 취득
@@ -110,30 +104,21 @@ public class ResearchClassActivity extends AppCompatActivity {
                 Spinner last_spinner = (Spinner) findViewById(R.id.spinner_last);
 
                 // 선택되어있는 아이템 취득
-                target_kindOfClass = kind_spinner.getSelectedItem().toString();
+                target_category = kind_spinner.getSelectedItem().toString();
                 target_grade = grade_spinner.getSelectedItem().toString();
-                temp_first = first_spinner.getSelectedItem().toString();
-                temp_last = last_spinner.getSelectedItem().toString();
+                time_first = first_spinner.getSelectedItemPosition();
+                time_last = last_spinner.getSelectedItemPosition();
 
-                if(temp_first.equals("선택")  && temp_last.equals("선택")){
-                    condition_first = condition_last = -1; //둘 다 선택 되지 않음
-                } else if(temp_first.equals("선택")){ //last만 선택 되지 않음
-                    condition_first = -1;
-                    condition_last = Integer.parseInt(temp_last);
-                } else if(temp_last.equals("선택")){ //last만 선택 되지 않음
-                    condition_first = Integer.parseInt(temp_first);
-                    condition_last = -1;
-                } else{ // 둘 다 선택 되어 있음
-                    condition_first = Integer.parseInt(temp_first);
-                    condition_last = Integer.parseInt(temp_last);
-                    if(condition_first >= condition_last){
-                        Toast.makeText(this, "제외할 교시가 유효하지 않습니다.", Toast.LENGTH_LONG).show();
-                        first_spinner.setSelection(0);
-                        last_spinner.setSelection(0);
-                        break;
-                    }
+                // 지정된 교시가 유효한지 검사
+                if(time_first != 0 && time_last != 0 && time_first >= time_last) {
+                    Toast.makeText(this, "제외할 교시가 유효하지 않습니다.", Toast.LENGTH_LONG).show();
+                    first_spinner.setSelection(0);
+                    last_spinner.setSelection(0);
+                    break;
                 }
 
+                time_first -= 1;
+                time_last -= 1;
 
                 // CheckBox Object를 취득
                 CheckBox condition_m = (CheckBox)findViewById(R.id.cB_Mon); // 월공강
@@ -144,17 +129,15 @@ public class ResearchClassActivity extends AppCompatActivity {
                 if(condition_f.isChecked()){
                     reqFlag[1] = 1;
                 }
-
-
                 // endregion
 
-                // 입력이 없으면 -1
-                //searchClasses.searchTheClass(target_kindOfClass, target_grade,condition_first,condition_last,reqFlag);
+                // 과목 검색 메서드 호출
+                final ArrayList<String> tmpArray = searchClasses.searchTheClass(target_category, target_grade, time_first, time_last, reqFlag);
 
                 //ListView에 표시하는 리스트 항목을 ArrayList로 준비한다.
-                Item items = new Item("title");
-                for(int i = 0; i < searchClasses.getNumClasses(); i++){
-                    items.add_Items_array(searchClasses.getTitle(i));
+                Item items = new Item("조회 과목");
+                for(int i = 0; i < tmpArray.size(); i++){
+                    items.add_Items_array(tmpArray.get(i));
                 }
 
                 // List항목과 ListView를 대응 시키는 ArrayAdapter를 준비
@@ -163,16 +146,19 @@ public class ResearchClassActivity extends AppCompatActivity {
                 // ListView에게 ArrayAdapter를 성정한다
                 NonScrollListView classListView = (NonScrollListView) findViewById(R.id.nonScrollListView1);
                 classListView.setAdapter(adapter);
+                //endregion
 
-                // ListView의 Item를 클릭하면 선택 중인 상태로 하기
-                classListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                final ArrayList<String> bucketArray = new ArrayList<String>();
+                //region ListView의 아이템을 길게 눌렀을때 아이템 배경색 바꾸기
+                classListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int pos, long ld) {
-                        String selectedClassInfo = (String) parent.getItemAtPosition(pos);
-                        Toast.makeText(ResearchClassActivity.this,selectedClassInfo,Toast.LENGTH_LONG).show();
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        final int pos = position;
+                        //TODO: 아이템 배경색 바꾸기
+                        return false;
                     }
                 });
-
+                //endregion
 
                 //region 숨긴 장바구니 버튼 표시
                 Button btn_bucket = (Button)this.findViewById(R.id.btn_bucket);
@@ -183,6 +169,7 @@ public class ResearchClassActivity extends AppCompatActivity {
 
         }
     }
+
 
     // 장바구니 버튼 동작
     public void onBucketButtonClick(View view) {

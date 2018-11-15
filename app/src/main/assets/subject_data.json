@@ -1,16 +1,16 @@
 [
   {
   "title": "English Reading and Writing I",
-  "serial": "053510",
-  "room": "18",
-  "professor": "김흥수-",
-  "category": "영어",
-  "major": "컴퓨터공학부",
-  "grade": "컴퓨터공학부(공통)",
-  "point": "2",
-  "when": "화-7,8",
-  "where": "인문405",
-  "limit": "30"
+    "serial": "053510",
+    "room": "18",
+    "professor": "김흥수-",
+    "category": "영어",
+    "major": "컴퓨터공학부",
+    "grade": "컴퓨터공학부(공통)",
+    "point": "2",
+    "when": "화-7,8",
+    "where": "인문405",
+    "limit": "30"
 },
   {
     "title": "English Reading and Writing II",

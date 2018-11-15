@@ -4,11 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class SearchClasses {
-    // TODO 科目のデータ構造体（３次元配列　科目データ×分部屋×科目数）
 
     private int numClasses = 0;
     final int N = 90;
@@ -24,6 +22,9 @@ public class SearchClasses {
     private String[] where = new String[N];
     private String[] limit = new String[N];
 
+
+
+    // JSON파일 변환 & setter
     public void parseJSON(String jsonString) {
         try {
             JSONArray jsons = new JSONArray(jsonString);
@@ -47,6 +48,114 @@ public class SearchClasses {
         }
     }
 
+    // 과목 검색 메서드
+    public ArrayList<String> searchTheClass(String target_category, String target_grade, int time_first, int time_last, int[] reqFlag){
+        ArrayList<String> result = new ArrayList<>();
+
+        int[] flag = new int[this.numClasses]; // 초기화로 모둔 요소에는 0이 들어감
+        int judgeNum = 0;
+
+        //region 이수구분으로 조건 조회
+        if(target_category.equals("이수구분")){ // 이수구분이 선택 되어있지 않을 때
+            // 아무것도 안함
+        }else{                                   // 이수구분이 선택 되어있을 때
+            judgeNum++;
+            for(int i = 0; i < this.numClasses; i++){
+                if(this.category[i].equals(target_category)){
+                    // 일치하는 이수 구분의 index를 +1 함
+                    flag[i] += 1;
+                }
+            }
+        }
+        //endregion
+
+        //region 학년으로 조건 조회
+        if(target_grade.equals("학년")){// 학년이 선택 되어있지 않을 때
+            // 아무것도 안함
+        }else{                           // 학년이 선택 되어있을 때
+            judgeNum++;
+            for(int i = 0; i < this.numClasses; i++){
+                if(this.grade[i].contains(target_grade) || this.grade[i].equals("컴퓨터공학부(공통)")){
+                    // 일치하는 학년의 index를 +1 함
+                    flag[i] += 1;
+                }
+            }
+        }
+        //endregion
+
+        //region 교시로 조건 조회
+        if(time_first == -1 && time_last == -1){ // 시작교시와 끝교시 모두 선택 되어 있지 않음
+            // 아무것도 안함
+        }
+        else{
+            if(time_first == -1) time_first = 0;
+            if(time_last == -1) time_last = 13;
+            for(int i = 0; i < this.numClasses; i++){
+                int[] fflag = new int[14]; //0 - 13
+                // json의 정보를 분리하는 작업
+                String[] tmp1 = this.when[i].split(" ",0); // 월-1,2 수-7,8 -> "월-1,2"과 "수-7,8"로 분리
+                for(int j = 0; j < tmp1.length; j++){
+                    String[] tmp2 = tmp1[j].split("-",0);  // 월-1,2 -> "월"과 "1,2"로 분리
+                    String[] tmp3 = tmp2[1].split(",",0);  // 1,2 -> "1"과 "2"로 분리
+                    for(int n = 0; n < tmp3.length; n++){
+                        fflag[Integer.parseInt(tmp3[n])] = 1;
+                    }
+                }
+
+                // fflag에 1이 유저가 지정한 범위에 속해 있는지 검사
+                for (int m = time_first; m < time_last; m++){
+                    if(fflag[m] == 1) {
+                        flag[i] = -1;
+                        break;
+                    }
+                }
+            }
+        }
+        //endregion
+
+        //region 공강으로 조건 조회
+        if(reqFlag[0] == -1 && reqFlag[1] == -1){ // 선택 되어 있지 않음
+            // 아무것도 안함
+        }else {                                    // 선택 되어 있음
+            if (reqFlag[0] == 1 && reqFlag[1] == 1) { // 월, 금 공강 희망
+                for(int i = 0; i < this.numClasses; i++){
+                    if(this.when[i].contains("월") || this.when[i].contains("금")){
+                        // 조건의 안맞는 index를 -1로 함
+                        flag[i] = -1;
+                    }
+                }
+            } else if (reqFlag[0] == 1) { // 월 공강 희망
+                for(int i = 0; i < this.numClasses; i++) {
+                    if (this.when[i].contains("월")) {
+                        // 조건의 안맞는 index를 -1로 함
+                        flag[i] = -1;
+                    }
+                }
+            } else if (reqFlag[1] == 1) { // 금 공강 희망
+                for(int i = 0; i < this.numClasses; i++) {
+                    if (this.when[i].contains("금")) {
+                        // 조건의 안맞는 index를 -1로 함
+                        flag[i] = -1;
+                    }
+                }
+            }
+        }
+        //endregion
+
+        for(int i = 0; i < this.numClasses; i++){
+            if(flag[i] >= judgeNum) {
+                String tmp = this.title[i]  + "_" + this.serial[i] + "_" + this.room[i] + "_" + this.professor[i] + "_"
+                        + this.category[i] + "_" + this.major[i] +  "_" +this.grade[i] + "_" + this.point[i] + "_"
+                        + this.when[i] + "_" + this.where[i] + "_" + this.limit[i];
+
+                result.add(tmp);
+            }
+        }
+
+        return result;
+    }
+
+    //region getter
     public String getTitle(int i){return this.title[i];}
     public String getSerial(int i){return this.serial[i];}
     public String getRoom(int i){return this.room[i];}
@@ -59,25 +168,7 @@ public class SearchClasses {
     public String getWhere(int i){return this.where[i];}
     public String getLimit(int i){return this.limit[i];}
     public int getNumClasses(){return this.numClasses;}
-
-
-    public ArrayList searchTheClass(String target_kindOfClass, String target_grade, int condition_first, int condition_last, int[] reqFlag){
-
-        // 이수구분으로 Sort
-
-        // 학년으로 Sort
-
-
-
-
-
-
-
-
-
-        ArrayList<String> result = new ArrayList<>();
-        return result;
-    }
+    //endregion
 
 
 

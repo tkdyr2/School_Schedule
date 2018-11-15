@@ -16,11 +16,11 @@ public class Item {
         this.title = title;
     }
 
-
     public void add_Items_array(String item_content) {
         items_array.add(item_content);
         this.items_array = items_array;
     }
+
     public ArrayList getItems_array(){
         return items_array;
     }

@@ -303,6 +303,62 @@ public class MyScheduleActivity extends AppCompatActivity {
                 th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
                 th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
             }
+            else if(searchClasses.getWhen(i).equals("수-7,8,9"))
+            {
+                w7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("수-1,2,3"))
+            {
+                w1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("수-5"))
+            {
+                w5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("수-4"))
+            {
+                w4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("목-4,5"))
+            {
+                th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("목-4,5,6"))
+            {
+                th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("목-7,8,9"))
+            {
+                th7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("금-1,2,3"))
+            {
+                f1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("금-4,5,6"))
+            {
+                f4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("금-5,6,7"))
+            {
+                f5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+
 
 
 

@@ -109,7 +109,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -121,7 +121,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -132,7 +132,7 @@
                 android:id="@+id/wndnesday0"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -144,7 +144,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -176,7 +176,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -188,7 +188,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -200,7 +200,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -211,7 +211,7 @@
                 android:id="@+id/wndnesday1"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -223,7 +223,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -255,7 +255,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -267,7 +267,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -279,7 +279,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -290,7 +290,7 @@
                 android:id="@+id/wndnesday2"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -302,7 +302,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -333,7 +333,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -345,7 +345,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -357,7 +357,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -368,7 +368,7 @@
                 android:id="@+id/wndnesday3"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -380,7 +380,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -411,7 +411,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -423,7 +423,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -435,7 +435,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -446,7 +446,7 @@
                 android:id="@+id/wndnesday4"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -458,7 +458,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -489,7 +489,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -501,7 +501,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -513,7 +513,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -524,7 +524,7 @@
                 android:id="@+id/wndnesday5"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -536,7 +536,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -567,7 +567,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -579,7 +579,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -591,7 +591,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -602,7 +602,7 @@
                 android:id="@+id/wndnesday6"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -614,7 +614,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -645,7 +645,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -657,7 +657,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -669,7 +669,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -680,7 +680,7 @@
                 android:id="@+id/wndnesday7"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -692,7 +692,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -723,7 +723,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -735,7 +735,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -747,7 +747,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -758,7 +758,7 @@
                 android:id="@+id/wndnesday8"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -770,7 +770,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -803,7 +803,7 @@
                 />
 
             <TextView
-                android:text="월"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -815,7 +815,7 @@
                 />
 
             <TextView
-                android:text="화"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -827,7 +827,7 @@
                 />
 
             <TextView
-                android:text="수"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -838,7 +838,7 @@
                 android:id="@+id/wndnesday9"
                 />
             <TextView
-                android:text="목"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -850,7 +850,7 @@
                 />
 
             <TextView
-                android:text="금"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"

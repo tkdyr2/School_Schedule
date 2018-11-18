@@ -1,14 +1,9 @@
 package cookandroid.com.schoolschedule;
 
 import android.content.res.AssetManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -124,6 +119,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
 
         m0.setText("수업");
+        m0.setText(hoge[0], TextView.BufferType.NORMAL);
 
 
 

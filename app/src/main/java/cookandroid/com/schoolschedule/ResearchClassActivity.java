@@ -5,7 +5,6 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -50,7 +49,7 @@ public class ResearchClassActivity extends AppCompatActivity {
         // endregion
 
         //region 전공 선택 창 설정
-        Spinner major_spinner = (Spinner) findViewById(R.id.spi_major);
+        Spinner major_spinner = findViewById(R.id.spi_major);
         ArrayAdapter<CharSequence> major_adapter = ArrayAdapter.createFromResource(this,
                 R.array.spi_major_array, android.R.layout.simple_spinner_item);
         major_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -58,7 +57,7 @@ public class ResearchClassActivity extends AppCompatActivity {
         //endregion
 
         //region 과목 종류 선택 창 설정
-        Spinner class_spinner = (Spinner) findViewById(R.id.spi_kindOfClass);
+        Spinner class_spinner = findViewById(R.id.spi_kindOfClass);
         ArrayAdapter<CharSequence> class_adapter = ArrayAdapter.createFromResource(this,
                 R.array.spi_kindOfClass_array, android.R.layout.simple_spinner_item);
         class_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -66,7 +65,7 @@ public class ResearchClassActivity extends AppCompatActivity {
         //endregion
 
         //region 학년 선택 창 설정
-        Spinner grade_spinner = (Spinner) findViewById(R.id.spi_grade);
+        Spinner grade_spinner = findViewById(R.id.spi_grade);
         ArrayAdapter<CharSequence> grade_adapter = ArrayAdapter.createFromResource(this,
                 R.array.spi_grade_array, android.R.layout.simple_spinner_item);
         grade_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -74,13 +73,13 @@ public class ResearchClassActivity extends AppCompatActivity {
         //endregion
 
         //region 희망 교시 범위 창 설정
-        Spinner first_spinner = (Spinner) findViewById(R.id.spinner_first);
+        Spinner first_spinner = findViewById(R.id.spinner_first);
         ArrayAdapter<CharSequence> time_adapter = ArrayAdapter.createFromResource(this,
                 R.array.spi_time_array,android.R.layout.simple_spinner_item);
         time_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         first_spinner.setAdapter(time_adapter);
 
-        Spinner last_spinner = (Spinner)findViewById(R.id.spinner_last);
+        Spinner last_spinner = findViewById(R.id.spinner_last);
         last_spinner.setAdapter(time_adapter);
         //endregion
     }
@@ -99,7 +98,7 @@ public class ResearchClassActivity extends AppCompatActivity {
 
                 //region 유저입력 값 취득
                 // 강좌명 입력값 취득
-                EditText text_title = (EditText)findViewById(R.id.className);
+                EditText text_title = findViewById(R.id.className);
                 target_title = text_title.getText().toString();
 
                 // Spinner Object를 취득
@@ -147,14 +146,14 @@ public class ResearchClassActivity extends AppCompatActivity {
                 myClassListView.setAdapter(customAdapter);
 
                 // 아이템 선택 동작 長押しで見た目変更
-                myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long ld) {
-
-
-                        return false;
-                    }
-                });
+//                myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//                    @Override
+//                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long ld) {
+//
+//
+//                        return false;
+//                    }
+//                });
 
 
                 //region 숨긴 장바구니 버튼 표시

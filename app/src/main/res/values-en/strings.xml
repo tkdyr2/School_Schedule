@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">SchoolSchedule</string>
+    <string name="result_frame_name">Result of Simulation</string>
+    <string name="research_frame_name">Search Classes</string>
+    <string name="bucket_frame_name">Selected Classes</string>
     <string name="my_frame_result">My Schedule</string>
     <string name="simulation">Simulate</string>
 

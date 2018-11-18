@@ -15,13 +15,16 @@ public class BucketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bucket);
 
+        // 전 화면 (과목탐색)에서 보내온 데이터 취득
+        Intent thisIntent = getIntent();
+        ArrayList<String> tmpArr = new ArrayList<>();
+        tmpArr = thisIntent.getStringArrayListExtra("selectedClassInfo");
 
         //region 과목 리스트
-
-        Item items = new Item("dummyData");
+        String[] hoge = {"hoge","hoge","hoge","hoge","hoge"};
 
         // List항목과 ListView를 대응 시키는 ArrayAdapter를 준비
-        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items.getItems_array());
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, hoge);
 
         // ListView에게 ArrayAdapter를 성정한다
         NonScrollListView selectedClassListView = (NonScrollListView) findViewById(R.id.nonScrollListView2);

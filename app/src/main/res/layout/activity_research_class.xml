@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:ems="10"
-            android:hint="강좌명으로 검색"
+            android:hint="키워드로 강좌명 검색"
             android:inputType="textPersonName" />
 
         <LinearLayout

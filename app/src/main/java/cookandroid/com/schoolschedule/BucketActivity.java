@@ -1,10 +1,9 @@
 package cookandroid.com.schoolschedule;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
@@ -17,21 +16,24 @@ public class BucketActivity extends AppCompatActivity {
 
         // 전 화면 (과목탐색)에서 보내온 데이터 취득
         Intent thisIntent = getIntent();
-        ArrayList<String> tmpArr = new ArrayList<>();
-        tmpArr = thisIntent.getStringArrayListExtra("selectedClassInfo");
-
-        //region 과목 리스트
-        String[] hoge = {"hoge","hoge","hoge","hoge","hoge"};
-
-        // List항목과 ListView를 대응 시키는 ArrayAdapter를 준비
-        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, hoge);
-
-        // ListView에게 ArrayAdapter를 성정한다
-        NonScrollListView selectedClassListView = (NonScrollListView) findViewById(R.id.nonScrollListView2);
-        selectedClassListView.setAdapter(adapter);
+        ArrayList<String> tmpArr = thisIntent.getStringArrayListExtra("selectedClassInfo");
 
 
-        //endregion
+        final ArrayList<ClassData> listData = new ArrayList<>();
+        for(int i =0; i<tmpArr.size(); i++){
+            String[] tmp2 = tmpArr.get(i).split(",",0);
+            ClassData data = new ClassData(tmp2);
+            listData.add(data);
+        }
+
+        // CustomAdapter를 생성 (R.layout.listview_layout : 자기가 만든 리스트뷰 레이아웃)
+        final MyAdapter customAdapter = new MyAdapter(this, listData, R.layout.listview_layout);
+
+        // ListView를 취득
+        NonScrollListView myClassListView = findViewById(R.id.nonScrollListView2);
+        myClassListView.setAdapter(customAdapter);
+
+
 
     }
 

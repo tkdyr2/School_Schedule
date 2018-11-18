@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -84,6 +85,8 @@ public class ResearchClassActivity extends AppCompatActivity {
         //endregion
     }
 
+    ArrayList<String[]> selectedClassInfoArray = new ArrayList<>();
+
     // 조회 버튼 동작
     public void onResearchButtonClick(View view) {
         switch (view.getId()) {
@@ -130,7 +133,7 @@ public class ResearchClassActivity extends AppCompatActivity {
                 // endregion
 
                 // 과목 검색 메서드 호출
-                ArrayList<String[]> tmpArray = searchClasses.searchTheClass(target_title, target_category, target_grade, time_first, time_last, reqFlag);
+                final ArrayList<String[]> tmpArray = searchClasses.searchTheClass(target_title, target_category, target_grade, time_first, time_last, reqFlag);
                 final ArrayList<ClassData> listData = new ArrayList<>();
                 // ListView에 표시하는 항목을 생성
                 for(int i = 0; i < tmpArray.size(); i++) {
@@ -139,21 +142,22 @@ public class ResearchClassActivity extends AppCompatActivity {
                 }
 
                 // CustomAdapter를 생성 (R.layout.listview_layout : 자기가 만든 리스트뷰 레이아웃)
-                MyAdapter customAdapter = new MyAdapter(this, listData, R.layout.listview_layout);
+                final MyAdapter customAdapter = new MyAdapter(this, listData, R.layout.listview_layout);
 
                 // ListView를 취득
                 NonScrollListView myClassListView = findViewById(R.id.nonScrollListView1);
                 myClassListView.setAdapter(customAdapter);
 
-                // 아이템 선택 동작 長押しで見た目変更
-//                myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//                    @Override
-//                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long ld) {
-//
-//
-//                        return false;
-//                    }
-//                });
+                // 아이템 선택 동작
+                myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                        selectedClassInfoArray.add(tmpArray.get(pos));
+                        Toast.makeText(ResearchClassActivity.this,"선택한 과목이 장바구니에 담아졌습니다.",Toast.LENGTH_SHORT).show();
+
+                        return false;
+                    }
+                });
 
 
                 //region 숨긴 장바구니 버튼 표시
@@ -167,16 +171,24 @@ public class ResearchClassActivity extends AppCompatActivity {
     }
 
 
-    ArrayList<String[]> selectedClassInfoArray = new ArrayList<>();
 
-
+    public ArrayList<String> getStringArray(){
+        ArrayList<String> tmpString2 = new ArrayList<>();
+        for(int i=0; i < selectedClassInfoArray.size(); i++){
+            String[] tmpString1 = selectedClassInfoArray.get(i);
+            tmpString2.add(tmpString1[0] + "," + tmpString1[2]+ "," + tmpString1[3] + "," +
+                    tmpString1[4]+ "," + tmpString1[5]+ "," + tmpString1[6]+ "," +
+                    tmpString1[7]+ "," + tmpString1[8]+ "," + tmpString1[9]);
+        }
+        return tmpString2;
+    }
 
     // 장바구니 버튼 동작
     public void onBucketButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bucket:
                 Intent bucketIntent = new Intent(ResearchClassActivity.this, BucketActivity.class);
-                bucketIntent.putExtra("selectedClassInfo", selectedClassInfoArray);
+                bucketIntent.putExtra("selectedClassInfo", getStringArray());
                 startActivity(bucketIntent);
                 break;
         }

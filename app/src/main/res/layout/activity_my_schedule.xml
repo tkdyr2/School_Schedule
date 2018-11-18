@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MyScheduleActivity">
 
+       <ScrollView
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent">
+
+
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -97,8 +103,8 @@
                 />
 
             <TextView
-
-                android:layout_width="match_parent"
+                android:text=""
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -109,8 +115,8 @@
                 />
 
             <TextView
-
-                android:layout_width="match_parent"
+               android:text=""
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -121,22 +127,22 @@
                 />
 
             <TextView
-                android:text="수"
-                android:layout_width="match_parent"
+                android:text=""
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
                 android:id="@+id/wndnesday0"
                 />
             <TextView
-                android:text="목"
-                android:layout_width="match_parent"
+                android:text=""
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -145,10 +151,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -166,7 +172,7 @@
 
             <TextView
                 android:text="9:30~10:20"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark"
@@ -177,7 +183,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -189,7 +195,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -201,10 +207,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -212,10 +218,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -224,10 +230,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -256,7 +262,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -268,7 +274,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -280,10 +286,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -291,10 +297,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -303,10 +309,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -334,7 +340,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -346,7 +352,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -358,10 +364,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -369,10 +375,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -381,10 +387,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -412,7 +418,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -424,7 +430,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -436,10 +442,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -447,10 +453,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -459,10 +465,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -490,7 +496,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -502,7 +508,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -514,10 +520,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -525,10 +531,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -537,10 +543,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -568,7 +574,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -580,7 +586,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -592,10 +598,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -603,10 +609,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -615,10 +621,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -646,7 +652,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -658,7 +664,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -670,10 +676,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -681,10 +687,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -693,10 +699,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -724,7 +730,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -736,7 +742,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -748,10 +754,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -759,10 +765,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -771,10 +777,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -804,7 +810,7 @@
 
             <TextView
                 android:text="월"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -816,7 +822,7 @@
 
             <TextView
                 android:text="화"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="center"
@@ -828,10 +834,10 @@
 
             <TextView
                 android:text="수"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -839,10 +845,10 @@
                 />
             <TextView
                 android:text="목"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -851,10 +857,10 @@
 
             <TextView
                 android:text="금"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:background="@drawable/cell_shape"
@@ -863,9 +869,8 @@
 
         </TableRow>
 
-
     </TableLayout>
-
+       </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

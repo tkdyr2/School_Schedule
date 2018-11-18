@@ -11,62 +11,46 @@ import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
 
-    // contextはおまじないと思って記述してください（説明が難しいため）
+    // context는 필수 항목
     private Context context = null;
-    // ArrayListの中に独自クラスのSearchClassesを指定
+    // ArrayList안에 ClassData를 지정
     private ArrayList<ClassData> data = null;
     private int resource = 0;
 
-    // コンストラクタ  MainActivityでアダプターを生成する箇所で呼ばれている
+    // 이건 Constructor이고  Activity내에서 Adapter를 생성할 때 호출됨
     public MyAdapter(Context context, ArrayList<ClassData> data, int resource){
         this.context = context;
         this.data = data;
         this.resource = resource;
     }
 
-    /**
-     * データの個数を返すメソッド
-     * ※このメソッドは必ず記述すること
-     */
+    // 데이터 개수를 return하는 메서드. ※필수
     public int getCount() {
         return data.size();
     }
 
-    /**
-     * 指定された順番にある項目を返すメソッド
-     * ※このメソッドは必ず記述すること
-     */
+    // 지정된 순번에 있는 항목을 return하는 메서드 ※필수
     public Object getItem(int position) {
         return data.get(position);
     }
 
-    /**
-     * 指定された順番にある項目の識別idを返すメソッド
-     * ※このメソッドは必ず記述すること
-     */
+    // 지정된 순번에 있는 항목의 식별id를 return 하는 메서드 ※필수
     public long getItemId(int position) {
         return data.get(position).getId();
     }
 
-    /**
-     * リスト項目を表示するためのメソッド
-     * 自作アダプターを作成するにあたって一番重要
-     * 実際にユーザが呼ぶ箇所ではなく、リストを生成するために自動で呼ばれる
-     * ※このメソッドは必ず記述すること
-     */
+    // 리스트 항목을 표시하기 위한 메서드. Adapter 작성 시 제일 중요한 부분. 실제로 유저가 호출하는 건 아니고 리스트를 생성하기 위해 자동호출됨. ※필수
     public View getView(int position, View convertView, ViewGroup parent) {
         Activity activity = (Activity) context;
-        // 指定された位置のデータを取得
-        ClassData data = (ClassData) getItem(position);
 
-        // 再利用可能なビューが無かったら生成する
+        ClassData data = (ClassData) getItem(position); // 지정된 위치의 데이터를 취득
+
+        // 재이용 가능한 뷰가 없으면 생성함
         if(convertView == null){
             convertView = activity.getLayoutInflater().inflate(resource, null);
         }
 
-        /**
-         * ここから各項目に値を割り当てる処理
-         */
+        // ListView의 레이아웃의 각 항목에 값을 할당하는 처리
         ((TextView) convertView.findViewById(R.id.title)).setText(data.getTitle());
         ((TextView) convertView.findViewById(R.id.serial)).setText(data.getSerial());
         ((TextView) convertView.findViewById(R.id.room)).setText(data.getRoom());

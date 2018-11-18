@@ -3,33 +3,32 @@ package cookandroid.com.schoolschedule;
 import java.util.Random;
 
 public class ClassData {
-    private long id = 0;
-    private String title = "";
-    private String serial = "";
-    private String room = "";
-    private String professor = "";
-    private String category = "";
-    private String major = "";
-    private String grade = "";
-    private String point = "";
-    private String when = "";
-    private String where = "";
-    private String limit = "";
+    private long id;
+    private String title;
+    private String serial;
+    private String room;
+    private String professor;
+    private String category;
+    private String major;
+    private String grade;
+    private String point;
+    private String when;
+    private String where;
+    private String limit;
 
     // constructor
-    public ClassData(String title, String serial, String room, String professor, String category, String major, String grade, String point, String when, String where, String limit){
+    public ClassData(String[] classInfo){
         this.id = (new Random()).nextLong();
-        this.title = title;
-        this.serial = serial;
-        this.room = room;
-        this.professor = professor;
-        this.category = category;
-        this.major = major;
-        this.grade = grade;
-        this.point = point;
-        this.when = when;
-        this.where = where;
-        this.limit = limit;
+        this.title = classInfo[0];
+        this.serial = classInfo[1];
+        this.room = classInfo[2];
+        this.professor = classInfo[3];
+        this.major = classInfo[4];
+        this.grade = classInfo[5];
+        this.point = classInfo[6];
+        this.when = classInfo[7];
+        this.where = classInfo[8];
+        this.limit = classInfo[9];
     }
 
 

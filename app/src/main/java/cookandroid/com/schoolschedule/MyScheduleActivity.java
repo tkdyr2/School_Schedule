@@ -32,8 +32,8 @@ public class MyScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_schedule);
 
-        TextView m0 =(TextView) findViewById(R.id.monday0);
-        TextView m1 =(TextView) findViewById(R.id.monday1);
+        TextView m0 = (TextView)findViewById(R.id.monday0);
+        TextView m1 = (TextView)findViewById(R.id.monday1);
         TextView m2 = (TextView)findViewById(R.id.monday2);
         TextView m3 =(TextView) findViewById(R.id.monday3);
         TextView m4 =(TextView) findViewById(R.id.monday4);
@@ -112,14 +112,31 @@ public class MyScheduleActivity extends AppCompatActivity {
 
         String[] hoge = new String[searchClasses.getNumClasses()]; //과목의 내용 하나를 통채로 다 보여주는 hoge배열
         for(int i =0; i < searchClasses.getNumClasses(); i++){
-            hoge[i] = searchClasses.getTitle(i) + "_" + searchClasses.getSerial(i)+"_"+searchClasses.getRoom(i) + "_" + searchClasses.getProfessor(i) + "_"
-                    + searchClasses.getCategory(i) + "_" + searchClasses.getMajor(i) +  "_" +searchClasses.getGrade(i) + "_" + searchClasses.getPoint(i) + "_"
-                    + searchClasses.getWhen(i) + "_" + searchClasses.getWhere(i) + "_" + searchClasses.getLimit(i);
+            hoge[i] = searchClasses.getTitle(i) + "_" +searchClasses.getProfessor(i) ;
         }
 
 
-        m0.setText("수업");
-        m0.setText(hoge[0], TextView.BufferType.NORMAL);
+       m0.setText(hoge[0],TextView.BufferType.NORMAL);
+        m5.setText(hoge[1],TextView.BufferType.NORMAL);
+        t2.setText(hoge[2],TextView.BufferType.NORMAL);
+        th7.setText(hoge[3],TextView.BufferType.NORMAL);
+        w6.setText(hoge[4],TextView.BufferType.NORMAL);
+        w2.setText(hoge[5],TextView.BufferType.NORMAL);
+        f5.setText(hoge[6],TextView.BufferType.NORMAL);
+        f1.setText(hoge[7],TextView.BufferType.NORMAL);
+        m1.setText(hoge[0],TextView.BufferType.NORMAL);
+        m2.setText(hoge[0],TextView.BufferType.NORMAL);
+        m3.setText(hoge[0],TextView.BufferType.NORMAL);
+        m4.setText(hoge[0],TextView.BufferType.NORMAL);
+        m5.setText(hoge[0],TextView.BufferType.NORMAL);
+        m6.setText(hoge[0],TextView.BufferType.NORMAL);
+        m7.setText(hoge[0],TextView.BufferType.NORMAL);
+        m8.setText(hoge[0],TextView.BufferType.NORMAL);
+        m9.setText(hoge[0],TextView.BufferType.NORMAL);
+
+
+
+
 
 
 

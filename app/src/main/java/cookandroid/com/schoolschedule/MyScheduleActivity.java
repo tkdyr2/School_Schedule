@@ -1,8 +1,10 @@
 package cookandroid.com.schoolschedule;
 
 import android.content.res.AssetManager;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -85,7 +87,8 @@ public class MyScheduleActivity extends AppCompatActivity {
 
 
         String[] classlist = new String[15];
-        int[][] classFlog = new int[5][10];
+        int[][] mondayFlog = new int[5][10];
+
 
 
         SearchClasses searchClasses = new SearchClasses();
@@ -110,7 +113,7 @@ public class MyScheduleActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String[] hoge = new String[searchClasses.getNumClasses()]; //과목의 내용 하나를 통채로 다 보여주는 hoge배열
+        String[] hoge = new String[searchClasses.getNumClasses()]; //과목의 내용을 읽어와서 hoge배열에 넣어줌
         for(int i =0; i < searchClasses.getNumClasses(); i++){
             hoge[i] = searchClasses.getTitle(i) + "_" +searchClasses.getProfessor(i) ;
         }
@@ -118,17 +121,194 @@ public class MyScheduleActivity extends AppCompatActivity {
 
 
 
-         m0.setText(hoge[0],TextView.BufferType.NORMAL);
-        m1.setText(hoge[0],TextView.BufferType.NORMAL);
-        m2.setText(hoge[0],TextView.BufferType.NORMAL);
-        m3.setText(hoge[0],TextView.BufferType.NORMAL);
-        m4.setText(hoge[0],TextView.BufferType.NORMAL);
-        m5.setText(hoge[0],TextView.BufferType.NORMAL);
-        m6.setText(hoge[0],TextView.BufferType.NORMAL);
-        m7.setText(hoge[0],TextView.BufferType.NORMAL);
-        m8.setText(hoge[0],TextView.BufferType.NORMAL);
-        m9.setText(hoge[0],TextView.BufferType.NORMAL);
 
+//setText를 사용하여 나의시간표xml화면에 표시함.
+         //m0.setText(hoge[0],TextView.BufferType.NORMAL);
+
+
+
+        String[] exampleClass= new String[6];
+        String[] mondayWhen = new String[searchClasses.getNumClasses()];
+        String[] mondayTitle = new String[searchClasses.getNumClasses()];
+
+        for(int i =0; i < searchClasses.getNumClasses(); i++){
+            mondayWhen[i] = searchClasses.getWhen(i);
+            mondayTitle[i] =searchClasses.getTitle(i)+"  "+searchClasses.getRoom(i);
+
+        }
+
+
+           /* for(int i =0; i < searchClasses.getNumClasses(); i++)
+            {
+
+                 if(mondayWhen[i].equals("월-4,5"))
+                {
+                 if(mondayFlog[4][0]==0&&mondayFlog[5][0]==0)
+                 {
+                     mondayFlog[4][0] = 1;
+                     mondayFlog[5][0] = 1;
+                     m4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                     m5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                  }
+                }*/
+
+
+
+        for(int i =0; i < searchClasses.getNumClasses(); i++)
+        {
+            if(searchClasses.getWhen(i).equals("월-4,5"))
+            {
+                m4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-7,8,9"))
+            {
+                m7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-1,2,3"))
+            {
+                m1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-6,7,8"))
+            {
+                m6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-4,5 수-6"))
+            {
+                m4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-6 수-7,8"))
+            {
+                m6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-1,2 수-3"))
+            {
+                m1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-7,8 수-9"))
+            {
+                m7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-3 수-1,2"))
+            {
+                m3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("월-1,2 수-7,8"))
+            {
+                m1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                m2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                w8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-7,8"))
+            {
+                t7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-7,8,9"))
+            {
+                t7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-1,2,3"))
+            {
+                t1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-1,2 목-1,2"))
+            {
+                t1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-4,5 목-7,8"))
+            {
+                t4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-4,5 금-1,2"))
+            {
+                t4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-4,5 목-4,5"))
+            {
+                t4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-1,2 목-3"))
+            {
+                t1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-4,5 목-6"))
+            {
+                t4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-6 금-1,2"))
+            {
+                t6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                f2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-7,8 목-7"))
+            {
+                t7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                t8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-3 목-1,2"))
+            {
+                t3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-9 목-8,9"))
+            {
+                t9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+            else if(searchClasses.getWhen(i).equals("화-6 목-4,5"))
+            {
+                t6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+            }
+
+
+
+
+
+        }
 
 
 

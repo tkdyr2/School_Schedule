@@ -1,15 +1,9 @@
 package cookandroid.com.schoolschedule;
 
 import android.content.res.AssetManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -93,77 +87,42 @@ public class MyScheduleActivity extends AppCompatActivity {
         String[] classlist = new String[15];
         int[][] classFlog = new int[5][10];
 
-        AssetManager assetManager = getResources().getAssets();
 
-        try{
-            //사용하고자 하는 json 파일 open
-            AssetManager.AssetInputStream ais = (AssetManager.AssetInputStream)assetManager.open("json/subject_data.json");
-
-            //stream을 리더로 읽기
-            BufferedReader br = new BufferedReader(new InputStreamReader(ais));
-
-            //StringBuilder 사용
-            StringBuilder sb = new StringBuilder();
-
-            //json파일의 내용이 용량이 클경우 Stirng 의 허용점인 4096 byte 를 넘어가면 오류발생
-            int bufferSize = 1024 * 1024;
-
-            //char 로 버프 싸이즈 만큼 담기위해 선언
-            char readBuf [] = new char[bufferSize];
-            int resultSize = 0;
-
-            //파일의 전체 내용 읽어오기
-            while((resultSize = br.read(readBuf))  != -1){
-                if(resultSize == bufferSize){
-                    sb.append(readBuf);
-                }else{
-                    for(int i = 0; i < resultSize; i++){
-                        //StringBuilder 에 append
-                        sb.append(readBuf[i]);
-                    }
-                }
+        SearchClasses searchClasses = new SearchClasses();
+        // JSON파일 읽기
+        AssetManager assetManager = getResources().getAssets(); // asset Folder안에 있는 파일을 취득하기 위한 인스탄스
+        InputStream is = null; // text파일을 읽기 위한 인스탄스
+        BufferedReader bf = null; // 한글자씩이 아니라 한줄씩 읽기 위한 인스탄스
+        try {
+            // JSON파일 읽기
+            is = assetManager.open("subject_data.json"); // asset 내에 있는 JSON파일 취득
+            bf = new BufferedReader(new InputStreamReader(is)); //JSON파일 읽기
+            String jsonString = "";
+            String str = bf.readLine();
+            while(str != null){
+                jsonString += str;
+                str = bf.readLine();
             }
-            // 수정 - 새로운 문자열을 만들어서 내부 버퍼의 내용을 복사하고 반환한다.
-            String jString = sb.toString();
-
-            //JSONObject 얻어 오기
-            JSONObject  jsonObject =  new JSONObject(jString);
-
-            //json value 값 얻기
-            String title = jsonObject.getString("title").toString();   //결과값 TEST
-
-            //이미지 사용법에 대해서는 이미 아시리라 믿고 패스 할께요;;
-
-            //JSONArray 사용법
-            JSONArray jArr = new JSONArray(jsonObject.getString("buttons"));
-
-            //StringArray에 buttons 의 title 키의 value값을 담겠습니다.
-
-            String btnTitle [] = new String[jArr.length()];
-
-            for(int i = 0; i < jArr.length(); i++){
-                btnTitle [i] = jArr.getJSONObject(i).getString("title").toString();
-                //출력하여 결과 얻기
-                System.out.println("btnTitle[" + i + "]=" + btnTitle[i]);
-            }
-
-        }catch(JSONException je){
-            Log.e("jsonErr", "json에러입니당~", je);
-        }catch(Exception e){
-            Log.e("execption", "파일이 없나봐용", e);
+            is.close();
+            bf.close();
+            searchClasses.parseJSON(jsonString);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        String[] hoge = new String[searchClasses.getNumClasses()]; //과목의 내용 하나를 통채로 다 보여주는 hoge배열
+        for(int i =0; i < searchClasses.getNumClasses(); i++){
+            hoge[i] = searchClasses.getTitle(i) + "_" + searchClasses.getSerial(i)+"_"+searchClasses.getRoom(i) + "_" + searchClasses.getProfessor(i) + "_"
+                    + searchClasses.getCategory(i) + "_" + searchClasses.getMajor(i) +  "_" +searchClasses.getGrade(i) + "_" + searchClasses.getPoint(i) + "_"
+                    + searchClasses.getWhen(i) + "_" + searchClasses.getWhere(i) + "_" + searchClasses.getLimit(i);
+        }
+
+
+        m0.setText("수업");
+        m0.setText(hoge[0], TextView.BufferType.NORMAL);
+
+
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-}
 }

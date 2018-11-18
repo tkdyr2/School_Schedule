@@ -20,13 +20,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"
             android:textAlignment="center" />
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="9">
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -62,6 +60,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="room"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/white" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left">
+
+                <TextView
+                    android:id="@+id/professor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="professor"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="major"
                     android:textAlignment="viewStart"
                     android:textColor="@color/white" />
 

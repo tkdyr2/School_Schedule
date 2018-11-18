@@ -3,13 +3,12 @@ package cookandroid.com.schoolschedule;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class SearchClasses {
 
     private int numClasses = 0;
-    final int N = 90;
+    private final int N = 90;
     private String[] title = new String[N];
     private String[] serial = new String[N];
     private String[] room = new String[N];
@@ -49,16 +48,15 @@ public class SearchClasses {
     }
 
     // 과목 검색 메서드
-    public ArrayList<String> searchTheClass(String target_category, String target_grade, int time_first, int time_last, int[] reqFlag){
-        ArrayList<String> result = new ArrayList<>();
+    public ArrayList<String[]> searchTheClass(String target_title, String target_category, String target_grade, int time_first, int time_last, int[] reqFlag){
+        ArrayList<String[]> result = new ArrayList<>();
 
         int[] flag = new int[this.numClasses]; // 초기화로 모둔 요소에는 0이 들어감
         int judgeNum = 0;
 
-        //region 이수구분으로 조건 조회
-        if(target_category.equals("이수구분")){ // 이수구분이 선택 되어있지 않을 때
-            // 아무것도 안함
-        }else{                                   // 이수구분이 선택 되어있을 때
+
+        // 이수구분으로 조건 조회
+        if(!target_category.equals("이수구분")){ // 이수구분이 선택 되어있을 때
             judgeNum++;
             for(int i = 0; i < this.numClasses; i++){
                 if(this.category[i].equals(target_category)){
@@ -67,12 +65,9 @@ public class SearchClasses {
                 }
             }
         }
-        //endregion
 
-        //region 학년으로 조건 조회
-        if(target_grade.equals("학년")){// 학년이 선택 되어있지 않을 때
-            // 아무것도 안함
-        }else{                           // 학년이 선택 되어있을 때
+        // 학년으로 조건 조회
+        if(!target_grade.equals("학년")){// 학년이 선택 되어있을 때
             judgeNum++;
             for(int i = 0; i < this.numClasses; i++){
                 if(this.grade[i].contains(target_grade) || this.grade[i].equals("컴퓨터공학부(공통)")){
@@ -81,15 +76,23 @@ public class SearchClasses {
                 }
             }
         }
-        //endregion
 
-        //region 교시로 조건 조회
-        if(time_first == -1 && time_last == -1){ // 시작교시와 끝교시 모두 선택 되어 있지 않음
-            // 아무것도 안함
+        // 강좌명으로 조건 조회
+        if(!target_grade.equals("")){// 학년이 선택 되어있을 때
+            judgeNum++;
+            for(int i = 0; i < this.numClasses; i++){
+                if(this.title[i].contains(target_title)){
+                    // 유저가 지정한 입력값을 포함하는 과목 index를 +1 함
+                    flag[i] += 1;
+                }
+            }
         }
+
+        // 교시로 조건 조회
+        if(time_first == -1 && time_last == -1){} // 시작 교시과 끝 교시 둘 다 선택 되어있지 않음
         else{
-            if(time_first == -1) time_first = 0;
-            if(time_last == -1) time_last = 13;
+            if(time_first == -1) time_first = 0; // 시작교시만 선택 되어있지 않으면 시작교시를 0으로 설정
+            if(time_last == -1) time_last = 13;  // 끝교시만 선택 되어있지 않으면 끝교시를 13으로 설정
             for(int i = 0; i < this.numClasses; i++){
                 int[] fflag = new int[14]; //0 - 13
                 // json의 정보를 분리하는 작업
@@ -111,44 +114,37 @@ public class SearchClasses {
                 }
             }
         }
-        //endregion
 
-        //region 공강으로 조건 조회
-        if(reqFlag[0] == -1 && reqFlag[1] == -1){ // 선택 되어 있지 않음
-            // 아무것도 안함
-        }else {                                    // 선택 되어 있음
-            if (reqFlag[0] == 1 && reqFlag[1] == 1) { // 월, 금 공강 희망
-                for(int i = 0; i < this.numClasses; i++){
-                    if(this.when[i].contains("월") || this.when[i].contains("금")){
-                        // 조건의 안맞는 index를 -1로 함
-                        flag[i] = -1;
-                    }
+        // 공강으로 조건 조회
+        if (reqFlag[0] == 1 && reqFlag[1] == 1) { // 월, 금 공강 희망
+            for(int i = 0; i < this.numClasses; i++){
+                if(this.when[i].contains("월") || this.when[i].contains("금")){
+                    // 조건의 안맞는(월요일,금요일에 수업하는 과목) index를 -1로 함
+                    flag[i] = -1;
                 }
-            } else if (reqFlag[0] == 1) { // 월 공강 희망
-                for(int i = 0; i < this.numClasses; i++) {
-                    if (this.when[i].contains("월")) {
-                        // 조건의 안맞는 index를 -1로 함
-                        flag[i] = -1;
-                    }
+            }
+        } else if (reqFlag[0] == 1) { // 월 공강 희망
+            for(int i = 0; i < this.numClasses; i++) {
+                if (this.when[i].contains("월")) {
+                    flag[i] = -1;
                 }
-            } else if (reqFlag[1] == 1) { // 금 공강 희망
-                for(int i = 0; i < this.numClasses; i++) {
-                    if (this.when[i].contains("금")) {
-                        // 조건의 안맞는 index를 -1로 함
-                        flag[i] = -1;
-                    }
+            }
+        } else if (reqFlag[1] == 1) { // 금 공강 희망
+            for(int i = 0; i < this.numClasses; i++) {
+                if (this.when[i].contains("금")) {
+                    flag[i] = -1;
                 }
             }
         }
-        //endregion
 
         for(int i = 0; i < this.numClasses; i++){
             if(flag[i] >= judgeNum) {
-                String tmp = this.title[i]  + "_" + this.serial[i] + "_" + this.room[i] + "_" + this.professor[i] + "_"
-                        + this.category[i] + "_" + this.major[i] +  "_" +this.grade[i] + "_" + this.point[i] + "_"
-                        + this.when[i] + "_" + this.where[i] + "_" + this.limit[i];
-
-                result.add(tmp);
+                String[] tmpo = { // 10개의 정보
+                        "과목명:" + this.title[i], "번호:" + this.serial[i],
+                        this.room[i] + "반", "교수:" + this.professor[i] , this.major[i], this.grade[i],
+                        this.point[i] + "학점", this.when[i] + "교시", this.where[i], "인원:" + this.limit[i]
+                };
+                result.add(tmpo);
             }
         }
 

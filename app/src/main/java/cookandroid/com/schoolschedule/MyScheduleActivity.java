@@ -32,8 +32,8 @@ public class MyScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_schedule);
 
-        TextView m0 =(TextView) findViewById(R.id.monday0);
-        TextView m1 =(TextView) findViewById(R.id.monday1);
+        TextView m0 = (TextView)findViewById(R.id.monday0);
+        TextView m1 = (TextView)findViewById(R.id.monday1);
         TextView m2 = (TextView)findViewById(R.id.monday2);
         TextView m3 =(TextView) findViewById(R.id.monday3);
         TextView m4 =(TextView) findViewById(R.id.monday4);
@@ -118,8 +118,11 @@ public class MyScheduleActivity extends AppCompatActivity {
         }
 
 
-        m0.setText("수업");
-        m0.setText(hoge[0], TextView.BufferType.NORMAL);
+
+
+       //m0.setText(hoge[0],TextView.BufferType.NORMAL);
+         t0.setText("qwe");
+
 
 
 

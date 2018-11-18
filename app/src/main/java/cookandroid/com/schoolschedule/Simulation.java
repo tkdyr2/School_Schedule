@@ -1,33 +1,38 @@
 package cookandroid.com.schoolschedule;
 
-import java.util.ArrayList;
+import android.content.res.AssetManager;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import static android.support.v4.graphics.drawable.IconCompat.getResources;
 
 public class Simulation {
     // 시뮬레이션 메서드
     public void simulate(){
-        // 과목 더미 데이터
-        ArrayList<String[]> dummyArray = new ArrayList<>();
-        String[] hoge = {"English Reading and Writing I","053510","18","김흥수","영어","컴퓨터공학부","컴퓨터공학(2-4학년)2학년","3학점","월-4,5 수-6","인문405","49"};
-        // 19과목 넣기
-        for(int i =0; i<9; i++){
-            dummyArray.add(hoge);
-        }
 
-        // 여기서 시뮬레이션 작업?
-        String[] tmpArray = new String[5*13];
-
-        for(int i=0; i< 5*13 ; i++){
-            String[] tmp = dummyArray.get(i);
-            tmpArray[i] = tmp[0]; // 과목명만
-        }
-
-        // log 표시
-        for(int j=0; j<13; j++){
-            for(int i=0; i<5; i++){
-                System.out.print(tmpArray[i+j]);
+        // JSON파일 읽기
+        SearchClasses searchClasses = new SearchClasses();
+        AssetManager assetManager = getResources().getAssets(); // asset Folder안에 있는 파일을 취득하기 위한 인스탄스
+        InputStream is = null; // text파일을 읽기 위한 인스탄스
+        BufferedReader bf = null; // 한글자씩이 아니라 한줄씩 읽기 위한 인스탄스
+        try {
+            // JSON파일 읽기
+            is = assetManager.open("subject_data.json"); // asset 내에 있는 JSON파일 취득
+            bf = new BufferedReader(new InputStreamReader(is)); //JSON파일 읽기
+            String jsonString = "";
+            String str = bf.readLine();
+            while(str != null){
+                jsonString += str;
+                str = bf.readLine();
             }
-            System.out.print("\r\n");
+            is.close();
+            bf.close();
+            searchClasses.parseJSON(jsonString);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
     }
 }

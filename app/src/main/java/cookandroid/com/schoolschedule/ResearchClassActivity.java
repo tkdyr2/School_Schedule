@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -131,7 +132,7 @@ public class ResearchClassActivity extends AppCompatActivity {
 
                 // 과목 검색 메서드 호출
                 ArrayList<String[]> tmpArray = searchClasses.searchTheClass(target_title, target_category, target_grade, time_first, time_last, reqFlag);
-                ArrayList<ClassData> listData = new ArrayList<>();
+                final ArrayList<ClassData> listData = new ArrayList<>();
                 // ListView에 표시하는 항목을 생성
                 for(int i = 0; i < tmpArray.size(); i++) {
                     ClassData data = new ClassData(tmpArray.get(i));
@@ -145,10 +146,19 @@ public class ResearchClassActivity extends AppCompatActivity {
                 NonScrollListView myClassListView = findViewById(R.id.nonScrollListView1);
                 myClassListView.setAdapter(customAdapter);
 
+                // 아이템 선택 동작 長押しで見た目変更
+                myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long ld) {
+
+
+                        return false;
+                    }
+                });
 
 
                 //region 숨긴 장바구니 버튼 표시
-                Button btn_bucket = (Button)this.findViewById(R.id.btn_bucket);
+                Button btn_bucket = this.findViewById(R.id.btn_bucket);
                 if (btn_bucket.getVisibility() == View.INVISIBLE) {
                     btn_bucket.setVisibility(View.VISIBLE);
                 }
@@ -157,9 +167,9 @@ public class ResearchClassActivity extends AppCompatActivity {
         }
     }
 
-    // 아이템 선택 동작
 
-    ArrayList<String> selectedClassInfoArray = new ArrayList<>();
+    ArrayList<String[]> selectedClassInfoArray = new ArrayList<>();
+
 
 
     // 장바구니 버튼 동작

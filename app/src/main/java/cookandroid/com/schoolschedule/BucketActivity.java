@@ -36,7 +36,6 @@ public class BucketActivity extends AppCompatActivity {
     }
 
 
-
     // 시뮬레이션 버튼 동작
     public void onSimuButtonClick(View view) {
         switch (view.getId()) {

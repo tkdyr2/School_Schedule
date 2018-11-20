@@ -39,6 +39,7 @@ public class MyAdapter extends BaseAdapter {
         return data.get(position).getId();
     }
 
+
     // 리스트 항목을 표시하기 위한 메서드. Adapter 작성 시 제일 중요한 부분. 실제로 유저가 호출하는 건 아니고 리스트를 생성하기 위해 자동호출됨. ※필수
     public View getView(int position, View convertView, ViewGroup parent) {
         Activity activity = (Activity) context;
@@ -61,6 +62,7 @@ public class MyAdapter extends BaseAdapter {
         ((TextView) convertView.findViewById(R.id.when)).setText(data.getWhen());
         ((TextView) convertView.findViewById(R.id.where)).setText(data.getWhere());
         ((TextView) convertView.findViewById(R.id.limit)).setText(data.getLimit());
+
 
         return convertView;
     }

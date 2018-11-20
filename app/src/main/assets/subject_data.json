@@ -117,7 +117,7 @@
     "limit": "33"
   },
   {
-    "title": "컴퓨터 교수-법",
+    "title": "컴퓨터 교수법",
     "serial": "245058",
     "room": "11",
     "professor": "배지혜",
@@ -260,7 +260,7 @@
     "limit": "50"
   },
   {
-    "title": "이산수-학",
+    "title": "이산수학",
     "serial": "212004",
     "room": "11",
     "professor": "권세계",
@@ -273,7 +273,7 @@
     "limit": "57"
   },
   {
-    "title": "이산수-학",
+    "title": "이산수학",
     "serial": "212004",
     "room": "12",
     "professor": "권세계",
@@ -286,7 +286,7 @@
     "limit": "52"
   },
   {
-    "title": "이산수-학",
+    "title": "이산수학",
     "serial": "212004",
     "room": "13",
     "professor": "권세계",

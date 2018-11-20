@@ -1,5 +1,6 @@
 package cookandroid.com.schoolschedule;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -11,8 +12,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class MyScheduleActivity extends AppCompatActivity {
+
+    // 전 화면 (과목탐색)에서 보내온 데이터 취득
+    Intent thisIntent = getIntent();
+    ArrayList<String> becketDatas = thisIntent.getStringArrayListExtra("becketDatas");
 
     private int numClasses = 0;
     final int N = 90;
@@ -88,7 +94,6 @@ public class MyScheduleActivity extends AppCompatActivity {
 
         String[] classlist = new String[15];
         int[][] mondayFlog = new int[5][10];
-
 
 
         SearchClasses searchClasses = new SearchClasses();

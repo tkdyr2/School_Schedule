@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class BucketActivity extends AppCompatActivity {
 
+    ArrayList<String> tmpArr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +18,7 @@ public class BucketActivity extends AppCompatActivity {
 
         // 전 화면 (과목탐색)에서 보내온 데이터 취득
         Intent thisIntent = getIntent();
-        ArrayList<String> tmpArr = thisIntent.getStringArrayListExtra("selectedClassInfo");
+        tmpArr = thisIntent.getStringArrayListExtra("selectedClassInfo");
 
 
         final ArrayList<ClassData> listData = new ArrayList<>();
@@ -33,28 +35,15 @@ public class BucketActivity extends AppCompatActivity {
         NonScrollListView myClassListView = findViewById(R.id.nonScrollListView2);
         myClassListView.setAdapter(customAdapter);
 
-
-
     }
 
     // 시뮬레이션 버튼 동작
     public void onSimuButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_simu:
-                int numWeek = 5, classTime = 14;
-                ArrayList<ArrayList<String>> classList = new ArrayList<>(); // 첫번째 배열 (교시)
-                ArrayList<String> week = new ArrayList<String>(); // 두번째 배열 (요일)
-
-                for (int j = 0; j < classTime; j++) {
-                    for (int i = 0; i < numWeek; i++) {
-                        String temp = "결과 과목 " + (i + 1) + "-" + (j);
-                        week.add(temp);
-                    }
-                    classList.add(week);
-                }
 
                 Intent scheduleResultIntent = new Intent(BucketActivity.this, MyScheduleActivity.class);
-                scheduleResultIntent.putExtra("resultSchedule", classList);
+                scheduleResultIntent.putExtra("becketDatas", tmpArr);
                 startActivity(scheduleResultIntent);
                 break;
         }

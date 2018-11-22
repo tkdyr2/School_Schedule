@@ -1,10 +1,9 @@
 package cookandroid.com.schoolschedule;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 public class MenuActivity extends AppCompatActivity {
@@ -67,8 +66,8 @@ public class MenuActivity extends AppCompatActivity {
      public void onResultButtonClick(View view){
          switch (view.getId()) {
              case R.id.btn_result:
-                 Intent myResultIntent = new Intent(MenuActivity.this, MyScheduleActivity.class);
-                 startActivity(myResultIntent);
+                 Intent RegisteredScheduleIntent = new Intent(MenuActivity.this, RegisteredScheduleActivity.class);
+                 startActivity(RegisteredScheduleIntent);
                  break;
          }
      }

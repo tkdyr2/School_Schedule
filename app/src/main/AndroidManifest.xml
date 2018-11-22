@@ -31,9 +31,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MyScheduleActivity"
-            android:label="@string/my_frame_result"
+            android:label="@string/result_frame_name"
             android:screenOrientation="portrait" />
-        <activity android:name=".RegisteredScheduleActivity"></activity>
+        <activity
+            android:name=".RegisteredScheduleActivity"
+            android:label="@string/RegisteredSchedule_frame_name"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

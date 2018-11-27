@@ -349,147 +349,394 @@ public class MyScheduleActivity extends AppCompatActivity {
             }
             else if(searchClasses.getWhen(i).equals("화-7,8"))
             {
-                t7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[7][1]==0 && Flog[8][1]==0) {
+                    Flog[7][1] = 1;
+                    Flog[8][1] = 1;
+                    t7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t8.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[7][1]==1 || Flog[8][1]==1){
+
+                    break;
+                }
+
             }
             else if(searchClasses.getWhen(i).equals("화-7,8,9"))
             {
-                t7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if(Flog[7][1]==0 && Flog[8][1]==0 && Flog[9][1]==0) {
+                    Flog[7][1]=1;
+                    Flog[9][1]=1;
+                    t7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t8.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t9.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                 else if (Flog[7][1]==1 || Flog[8][1]==1 || Flog[9][1]==1){
+
+                    break;
+                }
+
             }
             else if(searchClasses.getWhen(i).equals("화-1,2,3"))
             {
-                t1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[1][1]==0 && Flog[2][1]==0 && Flog[3][1]==0) {
+                    Flog[1][1] = 1;
+                    Flog[2][1] = 1;
+                    Flog[3][1] = 1;
+                    t1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t3.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[1][1]==1 || Flog[2][1]==1 || Flog[3][1]==1 ){
+
+                    break;
+                }
+
             }
             else if(searchClasses.getWhen(i).equals("화-1,2 목-1,2"))
             {
-                t1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+
+                if (Flog[1][1]==0 && Flog[2][1]==0 && Flog[1][3]==0 && Flog[2][3]==0) {
+                    Flog[1][1] = 1;
+                    Flog[2][1] = 1;
+                    Flog[1][3] = 1;
+                    Flog[2][3] = 1;
+                    t1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[1][1]==1 || Flog[2][1]==1 || Flog[1][3]==1 || Flog[2][3]==1){
+
+                    break;
+                }
             }
+
+
+
+
             else if(searchClasses.getWhen(i).equals("화-4,5 목-7,8"))
             {
-                t4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[4][1]==0 && Flog[5][1]==0 && Flog[7][3]==0 && Flog[8][3]==0) {
+                    Flog[4][1] = 1;
+                    Flog[5][1] = 1;
+                    Flog[7][3] = 1;
+                    Flog[8][3] = 1;
+                    t4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th8.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[4][1]==1 || Flog[5][1]==1 || Flog[7][3]==1 || Flog[8][3]==1){
+
+                    break;
+                }
+
+
             }
-            else if(searchClasses.getWhen(i).equals("화-4,5 금-1,2"))
-            {
-                t4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+
+
+            else if(searchClasses.getWhen(i).equals("화-4,5 금-1,2")) {
+
+
+                if (Flog[4][1] == 0 && Flog[5][1] == 0 && Flog[1][4] == 0 && Flog[2][4] == 1) {
+                    Flog[4][1] = 1;
+                    Flog[5][1] = 1;
+                    Flog[4][1] = 1;
+                    Flog[2][4] = 1;
+                    t4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+
+                else if (Flog[4][1]==1 || Flog[5][1]==1 || Flog[4][1]==1 || Flog[2][4]==1)
+                {
+
+                    break;
+                }
             }
             else if(searchClasses.getWhen(i).equals("화-4,5 목-4,5"))
             {
-                t4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+
+                if (Flog[4][1]==0 && Flog[5][1]==0 && Flog[4][3]==0 && Flog[5][3]==0) {
+                    Flog[4][1] = 1;
+                    Flog[5][1] = 1;
+                    Flog[4][3] = 1;
+                    Flog[5][3] = 1;
+                    t4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[5][1]==1 || Flog[5][1]==1 || Flog[4][3]==1 || Flog[5][3]==1){
+
+                 break;
+                }
             }
+
+
+
             else if(searchClasses.getWhen(i).equals("화-1,2 목-3"))
             {
-                t1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[1][1]==0 && Flog[2][1]==0 && Flog[3][3]==0 ) {
+                    Flog[1][1] = 1;
+                    Flog[2][1] = 1;
+                    Flog[3][3] = 1;
+                    t1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th3.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[1][1]==1 || Flog[2][1]==1 || Flog[3][3]==1){
+
+                  break;
+
+                }
             }
+
+
             else if(searchClasses.getWhen(i).equals("화-4,5 목-6"))
             {
-                t4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+
+                if (Flog[4][1]==0 && Flog[5][1]==0 && Flog[6][3]==0) {
+                    Flog[4][1] = 1;
+                    Flog[5][1] = 1;
+                    Flog[6][3] = 1;
+                    t4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th6.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+
+                else if (Flog[4][1]==1 || Flog[5][1]==1 || Flog[6][3]==1){
+
+                    break;
+                }
             }
+
             else if(searchClasses.getWhen(i).equals("화-6 금-1,2"))
             {
-                t6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[6][1]==0 && Flog[1][4]==0 && Flog[2][4]==0) {
+                    Flog[6][1] = 1;
+                    Flog[1][4] = 1;
+                    Flog[2][4] = 1;
+                    t6.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[6][1]==1 || Flog[1][4]==1 || Flog[2][4]==1){
+
+                break;
+
+                }
             }
             else if(searchClasses.getWhen(i).equals("화-7,8 목-7"))
             {
-                t7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                t8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+
+                if (Flog[7][1]==0 && Flog[8][1]==0 && Flog[7][3]==0) {
+                    Flog[7][1] = 1;
+                    Flog[8][1] = 1;
+                    Flog[7][3] = 1;
+                    t7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    t8.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[7][1]==1 && Flog[8][1]==1 && Flog[7][3]==1){
+
+                    break;
+                }
             }
-            else if(searchClasses.getWhen(i).equals("화-3 목-1,2"))
-            {
-                t3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+
+            else if(searchClasses.getWhen(i).equals("화-3 목-1,2")) {
+                if (Flog[3][1] == 0 && Flog[1][3] == 0 && Flog[3][3] == 0) {
+                    Flog[3][1] = 1;
+                    Flog[1][3] = 1;
+                    Flog[3][3] = 1;
+                    t3.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[3][1]==1 && Flog[1][3]==1 && Flog[3][3]==1 ){
+
+                    break;
+                }
+
             }
             else if(searchClasses.getWhen(i).equals("화-9 목-8,9"))
             {
-                t9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[9][1] == 0 && Flog[8][3] == 0 && Flog[9][3] == 0) {
+                    Flog[9][1] = 1;
+                    Flog[8][3] = 1;
+                    Flog[9][3] = 1;
+                    t9.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th8.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th9.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[9][1]==1 || Flog[8][3]==1 || Flog[9][3]==1){
+                     break;
+                }
             }
             else if(searchClasses.getWhen(i).equals("화-6 목-4,5"))
             {
-                t6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[6][1] == 0 && Flog[4][3] == 0 && Flog[5][3] == 0) {
+                    Flog[6][1] = 1;
+                    Flog[4][3] = 1;
+                    Flog[5][3] = 1;
+                    t6.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[6][1]==1 || Flog[4][3]==1 || Flog[5][3]==1 )
+                {
+                  break;
+                }
             }
             else if(searchClasses.getWhen(i).equals("수-7,8,9"))
             {
-                w7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                w8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                w9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[7][2] == 0 && Flog[8][2] == 0 && Flog[9][2] == 0) {
+                    Flog[7][2] = 1;
+                    Flog[8][2] = 1;
+                    Flog[9][2] = 1;
+                    w7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    w8.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    w9.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[7][2]==1 || Flog[8][2]==1 || Flog[9][2]==1){
+
+                break;
+
+                }
             }
             else if(searchClasses.getWhen(i).equals("수-1,2,3"))
             {
-                w1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                w2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                w3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[1][2] == 0 && Flog[2][2] == 0 && Flog[3][2] == 0) {
+                    Flog[1][2] = 1;
+                    Flog[2][2] = 1;
+                    Flog[3][2] = 1;
+                    w1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    w2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    w3.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[1][2]==1 || Flog[2][2]==1 || Flog[3][2]==1)
+                {
+                  break;
+
+                }
             }
+
             else if(searchClasses.getWhen(i).equals("수-5"))
             {
-                w5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[5][2] == 0 ) {
+                    Flog[5][2] = 1;
+                    w5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[5][2]==1){
+                break;
+
+                }
             }
+
             else if(searchClasses.getWhen(i).equals("수-4"))
             {
-                w4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[4][2] == 0 ) {
+                    Flog[4][2] = 1;
+                    w4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[4][2]==1){
+
+                break;
+                }
             }
-            else if(searchClasses.getWhen(i).equals("목-4,5"))
-            {
-                th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+
+            else if(searchClasses.getWhen(i).equals("목-4,5")) {
+                if (Flog[4][2] == 0 && Flog[5][2] == 0) {
+                    Flog[4][2] = 1;
+                    Flog[5][2] = 1;
+
+                    th4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[4][2]==1 || Flog[5][2]==1){
+                    break;
+
+                }
             }
             else if(searchClasses.getWhen(i).equals("목-4,5,6"))
             {
-                th4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[4][3] == 0 && Flog[5][3] == 0 && Flog[6][3] == 0) {
+                    Flog[4][3] = 1;
+                    Flog[5][3] = 1;
+                    Flog[6][3] = 1;
+
+
+                    th4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th6.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[4][3]==1 || Flog[5][3]==1 || Flog[6][3]==1){
+                break;
+                }
             }
             else if(searchClasses.getWhen(i).equals("목-7,8,9"))
             {
-                th7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th8.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                th9.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[7][3] == 0 && Flog[8][3] == 0 && Flog[9][3] == 0) {
+                    Flog[7][3] = 1;
+                    Flog[8][3] = 1;
+                    Flog[9][3] = 1;
+                    th7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th8.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    th9.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[7][3]==1 || Flog[8][3]==1 || Flog[9][3]==1)
+                {
+                break;
+
+                }
             }
             else if(searchClasses.getWhen(i).equals("금-1,2,3"))
             {
-                f1.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f2.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f3.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[1][4] == 0 && Flog[2][4] == 0 && Flog[3][4] == 0) {
+                    Flog[1][4] = 1;
+                    Flog[2][4] = 1;
+                    Flog[3][4] = 1;
+
+                    f1.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f2.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f3.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[1][4]==1 || Flog[2][4]==1 || Flog[3][4]==1){
+                break;
+
+                }
             }
             else if(searchClasses.getWhen(i).equals("금-4,5,6"))
             {
-                f4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[4][4] == 0 && Flog[5][4] == 0 && Flog[6][4] == 0) {
+                    Flog[4][4] = 1;
+                    Flog[5][4] = 1;
+                    Flog[6][4] = 1;
+
+                    f4.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f6.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[4][4]==1 || Flog[5][4]==1 || Flog[6][4]==1)
+                {
+                break;
+                }
             }
             else if(searchClasses.getWhen(i).equals("금-5,6,7"))
             {
-                f5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f6.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                f7.setText(mondayTitle[i],TextView.BufferType.NORMAL);
+                if (Flog[5][4] == 0 && Flog[6][4] == 0 && Flog[7][4] == 0) {
+                    Flog[5][4] = 1;
+                    Flog[6][4] = 1;
+                    Flog[7][4] = 1;
+                    f5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f6.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                    f7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
+                }
+                else if (Flog[5][4]==1 || Flog[6][4]==1 || Flog[7][4]==1 ){
+                break;
+                }
             }
-
 
 
 

@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 public class BucketActivity extends AppCompatActivity {
 
-    public ArrayList<String> tmpArr;
+    ArrayList<String> tmpArr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +31,11 @@ public class BucketActivity extends AppCompatActivity {
         // CustomAdapter를 생성 (R.layout.listview_layout : 자기가 만든 리스트뷰 레이아웃)
         final MyAdapter customAdapter = new MyAdapter(this, listData, R.layout.listview_layout);
 
-        // ListView를 취득하고 지정
+        // ListView를 취득
         NonScrollListView myClassListView = findViewById(R.id.nonScrollListView2);
         myClassListView.setAdapter(customAdapter);
-    }
 
+    }
 
     // 시뮬레이션 버튼 동작
     public void onSimuButtonClick(View view) {
@@ -42,7 +43,7 @@ public class BucketActivity extends AppCompatActivity {
             case R.id.btn_simu:
 
                 Intent scheduleResultIntent = new Intent(BucketActivity.this, MyScheduleActivity.class);
-                scheduleResultIntent.putExtra("resultSchedule", tmpArr);
+                scheduleResultIntent.putExtra("becketDatas", tmpArr);
                 startActivity(scheduleResultIntent);
                 break;
         }

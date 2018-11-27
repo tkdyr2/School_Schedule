@@ -3,7 +3,7 @@
     <string name="result_frame_name">시뮬레이션 결과 시간표</string>
     <string name="research_frame_name">과목검색</string>
     <string name="bucket_frame_name">장바구니</string>
-    <string name="my_frame_result">나의 시간표</string>
+    <string name="RegisteredSchedule_frame_name">나의 시간표</string>
     <string name="simulation">시뮬레이션</string>
 
     <string-array name="spi_time_array">

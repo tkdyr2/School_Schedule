@@ -4,7 +4,7 @@
     <string name="result_frame_name">シミュレーション結果</string>
     <string name="research_frame_name">科目検索</string>
     <string name="bucket_frame_name">選択した科目</string>
-    <string name="my_frame_result">マイ時間割</string>
+    <string name="RegisteredSchedule_frame_name">マイ時間割</string>
     <string name="simulation">シミュレーション</string>
 
 

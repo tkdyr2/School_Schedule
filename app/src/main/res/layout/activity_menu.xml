@@ -1,45 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/origin_backGray"
-    tools:context=".MenuActivity"
-    android:id="@+id/relativeLayout">
+    android:orientation="vertical"
+    tools:context=".MenuActivity">
 
-    <Button
-        android:id="@+id/btn_simulation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/menu_button_simu_state"
-        android:onClick="onSimuButtonClick"
-        android:padding="15dp"
-        android:text="@string/simulation"
-        android:textColor="@android:color/background_light"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_result"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/menu_button_result_state"
-        android:onClick="onResultButtonClick"
-        android:padding="15dp"
-        android:text="@string/my_frame_result"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:autoText="false"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:editable="false"
+        android:ems="10"
+        android:focusableInTouchMode="false"
+        android:inputType="textMultiLine"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:selectAllOnFocus="false"
+        android:text="정말 귀찮죠??\n\n 수강 과목 시간표 짜기\n\n앞으로는 자동으로\n\n 해결할 수 있어요"
         android:textAlignment="center"
-        android:textColor="@android:color/background_light"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_simulation" />
-</android.support.constraint.ConstraintLayout>
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_simulation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/menu_button_simu_state"
+            android:onClick="onSimuButtonClick"
+            android:padding="15dp"
+            android:text="@string/simulation"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btn_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/menu_button_result_state"
+            android:onClick="onResultButtonClick"
+            android:padding="15dp"
+            android:text="@string/RegisteredSchedule_frame_name"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</LinearLayout>

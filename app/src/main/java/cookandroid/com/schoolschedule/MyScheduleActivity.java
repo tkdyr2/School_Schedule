@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class MyScheduleActivity extends AppCompatActivity {
 
     // 전 화면 (과목탐색)에서 보내온 데이터 취득
-    Intent thisIntent = getIntent();
-    ArrayList<String> becketDatas = thisIntent.getStringArrayListExtra("becketDatas");
+   // Intent thisIntent = getIntent();
+   // ArrayList<String> becketDatas = thisIntent.getStringArrayListExtra("becketDatas");
 
     private int numClasses = 0;
     final int N = 90;
@@ -145,22 +145,6 @@ public class MyScheduleActivity extends AppCompatActivity {
         }
 
 
-           /* for(int i =0; i < searchClasses.getNumClasses(); i++)
-            {
-
-                 if(mondayWhen[i].equals("월-4,5"))
-                {
-                 if(mondayFlog[4][0]==0&&mondayFlog[5][0]==0)
-                 {
-                     mondayFlog[4][0] = 1;
-                     mondayFlog[5][0] = 1;
-                     m4.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                     m5.setText(mondayTitle[i],TextView.BufferType.NORMAL);
-                  }
-                }*/
-
-
-
 
 
 
@@ -180,7 +164,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 else if(Flog[4][0]==1 || Flog[5][0]==1)
                 {
 
-                  break;
+
 
                 }
 
@@ -198,7 +182,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[7][0]==1 || Flog[8][0]==1 || Flog[9][0]==1){
 
-                    break;
+
                 }
 
 
@@ -215,7 +199,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                   }
                  else if (Flog[1][0]==1 || Flog[2][0]==1 || Flog[3][0]==1){
 
-                    break;
+
 
                 }
 
@@ -232,7 +216,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[6][0]==1 || Flog[7][0]==1 || Flog[8][0]==1 ) {
 
-                    break;
+
 
                 }
 
@@ -252,7 +236,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
                 else if (Flog[4][0]==1 || Flog[5][0]==1 || Flog[6][2]==1)
                 {
-                    break;
+
                 }
 
 
@@ -271,7 +255,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
                 else if (Flog[6][0]==1 || Flog[7][2]==1 || Flog[8][2]==1){
 
-                    break;
+
 
                 }
             }
@@ -287,7 +271,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if(Flog[1][0]==1 || Flog[2][0]==1 || Flog[3][2]==1){
 
-                    break;
+
 
                 }
 
@@ -304,7 +288,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                  else if (Flog[7][0]==1 || Flog[8][0]==1 || Flog[9][2]==1){
 
-                    break;
+
                 }
 
             }
@@ -321,7 +305,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
                 else if (Flog[3][0]==1 || Flog[1][2]==1 || Flog[2][2]==1){
 
-                    break;
+
 
                 }
 
@@ -340,7 +324,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if(Flog[1][0]==1 || Flog[2][0]==1 || Flog[7][2]==0 && Flog[8][2]==0){
 
-                    break;
+
                 }
 
 
@@ -357,7 +341,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[7][1]==1 || Flog[8][1]==1){
 
-                    break;
+
                 }
 
             }
@@ -372,7 +356,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                  else if (Flog[7][1]==1 || Flog[8][1]==1 || Flog[9][1]==1){
 
-                    break;
+
                 }
 
             }
@@ -388,7 +372,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[1][1]==1 || Flog[2][1]==1 || Flog[3][1]==1 ){
 
-                    break;
+
                 }
 
             }
@@ -407,7 +391,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[1][1]==1 || Flog[2][1]==1 || Flog[1][3]==1 || Flog[2][3]==1){
 
-                    break;
+
                 }
             }
 
@@ -428,7 +412,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[4][1]==1 || Flog[5][1]==1 || Flog[7][3]==1 || Flog[8][3]==1){
 
-                    break;
+
                 }
 
 
@@ -452,7 +436,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 else if (Flog[4][1]==1 || Flog[5][1]==1 || Flog[4][1]==1 || Flog[2][4]==1)
                 {
 
-                    break;
+
                 }
             }
             else if(searchClasses.getWhen(i).equals("화-4,5 목-4,5"))
@@ -470,7 +454,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[5][1]==1 || Flog[5][1]==1 || Flog[4][3]==1 || Flog[5][3]==1){
 
-                 break;
+
                 }
             }
 
@@ -488,7 +472,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[1][1]==1 || Flog[2][1]==1 || Flog[3][3]==1){
 
-                  break;
+
 
                 }
             }
@@ -508,7 +492,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
                 else if (Flog[4][1]==1 || Flog[5][1]==1 || Flog[6][3]==1){
 
-                    break;
+
                 }
             }
 
@@ -524,7 +508,6 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[6][1]==1 || Flog[1][4]==1 || Flog[2][4]==1){
 
-                break;
 
                 }
             }
@@ -541,7 +524,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[7][1]==1 && Flog[8][1]==1 && Flog[7][3]==1){
 
-                    break;
+
                 }
             }
 
@@ -556,7 +539,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[3][1]==1 && Flog[1][3]==1 && Flog[3][3]==1 ){
 
-                    break;
+
                 }
 
             }
@@ -571,7 +554,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                     th9.setText(mondayTitle[i], TextView.BufferType.NORMAL);
                 }
                 else if (Flog[9][1]==1 || Flog[8][3]==1 || Flog[9][3]==1){
-                     break;
+
                 }
             }
             else if(searchClasses.getWhen(i).equals("화-6 목-4,5"))
@@ -586,7 +569,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[6][1]==1 || Flog[4][3]==1 || Flog[5][3]==1 )
                 {
-                  break;
+
                 }
             }
             else if(searchClasses.getWhen(i).equals("수-7,8,9"))
@@ -601,7 +584,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[7][2]==1 || Flog[8][2]==1 || Flog[9][2]==1){
 
-                break;
+
 
                 }
             }
@@ -617,7 +600,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[1][2]==1 || Flog[2][2]==1 || Flog[3][2]==1)
                 {
-                  break;
+
 
                 }
             }
@@ -629,7 +612,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                     w5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
                 }
                 else if (Flog[5][2]==1){
-                break;
+
 
                 }
             }
@@ -642,7 +625,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[4][2]==1){
 
-                break;
+
                 }
             }
 
@@ -655,7 +638,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                     th5.setText(mondayTitle[i], TextView.BufferType.NORMAL);
                 }
                 else if (Flog[4][2]==1 || Flog[5][2]==1){
-                    break;
+
 
                 }
             }
@@ -672,7 +655,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                     th6.setText(mondayTitle[i], TextView.BufferType.NORMAL);
                 }
                 else if (Flog[4][3]==1 || Flog[5][3]==1 || Flog[6][3]==1){
-                break;
+
                 }
             }
             else if(searchClasses.getWhen(i).equals("목-7,8,9"))
@@ -687,7 +670,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[7][3]==1 || Flog[8][3]==1 || Flog[9][3]==1)
                 {
-                break;
+
 
                 }
             }
@@ -703,7 +686,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                     f3.setText(mondayTitle[i], TextView.BufferType.NORMAL);
                 }
                 else if (Flog[1][4]==1 || Flog[2][4]==1 || Flog[3][4]==1){
-                break;
+
 
                 }
             }
@@ -720,7 +703,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 else if (Flog[4][4]==1 || Flog[5][4]==1 || Flog[6][4]==1)
                 {
-                break;
+
                 }
             }
             else if(searchClasses.getWhen(i).equals("금-5,6,7"))
@@ -734,7 +717,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                     f7.setText(mondayTitle[i], TextView.BufferType.NORMAL);
                 }
                 else if (Flog[5][4]==1 || Flog[6][4]==1 || Flog[7][4]==1 ){
-                break;
+
                 }
             }
 
@@ -742,7 +725,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
 
 
-        }
+        } //마지막for문
 
 
 

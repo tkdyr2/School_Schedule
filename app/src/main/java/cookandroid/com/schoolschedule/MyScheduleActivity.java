@@ -164,8 +164,6 @@ public class MyScheduleActivity extends AppCompatActivity {
                 else if(Flog[4][0]==1 || Flog[5][0]==1)
                 {
 
-
-
                 }
 
 

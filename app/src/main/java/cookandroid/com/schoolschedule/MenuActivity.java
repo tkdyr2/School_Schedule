@@ -64,12 +64,12 @@ public class MenuActivity extends AppCompatActivity {
     }
      // 나의 시간표 버튼 클릭
      public void onResultButtonClick(View view){
-         switch (view.getId()) {
-             case R.id.btn_result:
-                 Intent myScheduleActivityIntent = new Intent(MenuActivity.this, MyScheduleActivity.class);
-                 startActivity(myScheduleActivityIntent);
-                 break;
-         }
+//         switch (view.getId()) {
+//             case R.id.btn_result:
+//                 Intent myScheduleActivityIntent = new Intent(MenuActivity.this, MyScheduleActivity.class);
+//                 startActivity(myScheduleActivityIntent);
+//                 break;
+//         }
      }
     //endregion
 

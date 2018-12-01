@@ -6,6 +6,8 @@
     <string name="RegisteredSchedule_frame_name">나의 시간표</string>
     <string name="simulation">시뮬레이션</string>
 
+    <string name="toastMessage">선택한 과목이 장바구니에 담아졌습니다.</string>
+
     <string-array name="spi_time_array">
         <item>선택</item>
         <item>0</item>

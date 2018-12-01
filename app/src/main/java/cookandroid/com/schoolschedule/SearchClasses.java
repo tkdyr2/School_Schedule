@@ -140,9 +140,9 @@ public class SearchClasses {
         for(int i = 0; i < this.numClasses; i++){
             if(flag[i] >= judgeNum) {
                 String[] tmpo = { // 10개의 정보
-                        "과목명:" + this.title[i], "번호:" + this.serial[i],
-                        this.room[i] + "반", "교수:" + this.professor[i] , this.major[i], this.grade[i],
-                        this.point[i] + "학점", this.when[i] + "교시", this.where[i], "인원:" + this.limit[i]
+                        this.title[i], this.category[i],
+                        this.room[i], this.professor[i], this.major[i], this.grade[i],
+                        this.point[i], this.when[i], this.where[i], this.limit[i]
                 };
                 result.add(tmpo);
             }

@@ -6,7 +6,7 @@
     <string name="bucket_frame_name">選択した科目</string>
     <string name="RegisteredSchedule_frame_name">マイ時間割</string>
     <string name="simulation">シミュレーション</string>
-
+    <string name="toastMessage">買い物かごに追加されました</string>
 
 
 </resources>

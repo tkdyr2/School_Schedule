@@ -1,71 +1,48 @@
 package cookandroid.com.schoolschedule;
 
-import android.support.v7.app.AppCompatActivity;
-import android.content.res.AssetManager;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
 import java.util.ArrayList;
 import java.util.Collections;
+
 import static java.lang.Integer.parseInt;
 
 
 public class MyScheduleActivity extends AppCompatActivity {
-    SearchClasses searchClasses = new SearchClasses();
     public int classTime = 10;
     public int pointLimit = 22; // 19, 16
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_my_schedule);
 
-        //region JSON파일 읽기
-        AssetManager assetManager = getResources().getAssets(); // asset Folder안에 있는 파일을 취득하기 위한 인스탄스
-        InputStream is = null; // text파일을 읽기 위한 인스탄스
-        BufferedReader bf = null; // 한글자씩이 아니라 한줄씩 읽기 위한 인스탄스
-        try {
-            // JSON파일 읽기
-            is = assetManager.open("subject_data.json"); // asset 내에 있는 JSON파일 취득
-            bf = new BufferedReader(new InputStreamReader(is)); //JSON파일 읽기
-            String jsonString = "";
-            String str = bf.readLine();
-            while(str != null){
-                jsonString += str;
-                str = bf.readLine();
-            }
-            is.close();
-            bf.close();
-            searchClasses.parseJSON(jsonString);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // endregion
+        Intent thisintent = getIntent();
+        ArrayList<String> tmp = thisintent.getStringArrayListExtra("bucketData");
 
-        int count = 0;
-        // 장바구니 데이터 작성    과목명_이수구분_교시
-        ArrayList<String> tmp = new ArrayList<>();
-        for(int i=0; i<searchClasses.getNumClasses(); i ++) {
-            if (i % 4 == 0) {
-                count++;
-                tmp.add(searchClasses.getTitle(i) + "_" + searchClasses.getCategory(i) + "_" + searchClasses.getWhen(i) + "_" + searchClasses.getPoint(i));
-            }
-        }
+          /* 10개의 정보
+                        this.title[i], this.category[i],
+                        this.room[i], this.professor[i], this.major[i], this.grade[i],
+                        this.point[i], this.when[i], this.where[i], this.limit[i]
+         */
+
 
         ArrayList<String[][]> simuSamples = new ArrayList<>();
 
         // 경우 (sample)를 생성
         int sampleNum = 10;
         for(int n = 0; n < sampleNum; n++){
-            tmp = sort(tmp, count); // ArrayList의 과목 순서를 결정
+            tmp = sort(tmp); // ArrayList의 과목 순서를 결정
             String[][] table = setTable(tmp); // table에 과목 정보 넣기
             simuSamples.add(table); // table를 ArrayList에 추가
         }
 
         simuSamples = simuSamplesSort(simuSamples); // table의 우선순위를 맺음
+
+
 
         //TODO: 총 학점 표시
         int tableNum = 3;
@@ -74,6 +51,7 @@ public class MyScheduleActivity extends AppCompatActivity {
             point[g] = 0;
         }
 
+        //TODO: 要確認
         //시간표 중북 검사 및 제거
         boolean[] notSameFlag = new boolean[simuSamples.size()]; // 초기값 false
         notSameFlag[0] = true;
@@ -91,11 +69,23 @@ public class MyScheduleActivity extends AppCompatActivity {
             }
         }
 
+        ArrayList<String[][]> dispTableList = new ArrayList<>();
+        // 표시를 위해 정리
+        for(int i = 0; i < tableNum; i++){
+            String[][] dispTable = simuSamples.get(i);
+            for(int x = 0; x < 5; x++){
+                for(int y = 0; y < classTime; y++){
+                    if(dispTable[x][y]!=null) dispTable[x][y] = dispTable[x][y].replace("_", " ");
+                }
+            }
+            dispTableList.add(dispTable);
+        }
+
 
         //String.valueOf(point[i])
         // textView에 값 설정 (학점 포함)
         for(int i = 0; i < tableNum; i++){
-            if(notSameFlag[i]) setTextView(simuSamples.get(i), i, "0"); // textView에 값 설정
+            if(notSameFlag[i]) setTextView(dispTableList.get(i), i, "0"); // textView에 값 설정
         }
     }
 
@@ -111,7 +101,8 @@ public class MyScheduleActivity extends AppCompatActivity {
                 for(int y = 0; y < classTime; y++){
                     if(hoge[x][y] != null) {
                         String[] pointTmp = hoge[x][y].split("_", 0);
-                        point[m] += parseInt(pointTmp[1])/3;
+                        String tmpPoint = pointTmp[4].replace("학점","");
+                        point[m] += parseInt(tmpPoint)/3;
                     }
                 }
             }
@@ -143,7 +134,7 @@ public class MyScheduleActivity extends AppCompatActivity {
         //endregion
 
         //region 빈시간이 적은 시간표에게 우선순위를 부여한다.
-        simuSamples = quickSort(emptyCount, 0, emptyCount.length-1, simuSamples);
+        simuSamples = quickSort(emptyCount, 0, emptyCount.length - 1, simuSamples);
 
         return simuSamples;
     }
@@ -220,13 +211,21 @@ public class MyScheduleActivity extends AppCompatActivity {
 
     // textView 취득 및 설정
     public void setTextView(String[][] table, int i, String pointSum){
-        switch (i){
+
+//        for(int x=0;x<5;x++){
+//            for(int y=0; y<classTime; y++){
+//                if(table[x][y] == null) table[x][y] = "";
+//            }
+//        }
+
+        //region textView Setting
+        switch (i) {
             case 0:
                 TextView countClasses1 = findViewById(R.id.countClasses1);
                 //region 1번째 시간표의 textView 취득
                 TextView m0 = findViewById(R.id.monday0);
                 TextView m1 = findViewById(R.id.monday1);
-                TextView m2 =  findViewById(R.id.monday2);
+                TextView m2 = findViewById(R.id.monday2);
                 TextView m3 = findViewById(R.id.monday3);
                 TextView m4 = findViewById(R.id.monday4);
                 TextView m5 = findViewById(R.id.monday5);
@@ -276,7 +275,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 TextView f9 = findViewById(R.id.friday9);
                 // endregion
                 //region 1번째 시간표의 textVeiw 설정
-                countClasses1.setText(pointSum);
+//                countClasses1.setText(pointSum);
 
                 m0.setText(table[0][0]);
                 m1.setText(table[0][1]);
@@ -340,7 +339,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
                 TextView m00 = findViewById(R.id.monday00);
                 TextView m11 = findViewById(R.id.monday11);
-                TextView m22 =  findViewById(R.id.monday22);
+                TextView m22 = findViewById(R.id.monday22);
                 TextView m33 = findViewById(R.id.monday33);
                 TextView m44 = findViewById(R.id.monday44);
                 TextView m55 = findViewById(R.id.monday55);
@@ -390,7 +389,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 TextView f99 = findViewById(R.id.friday99);
                 // endregion
                 //region 2번째 시간표의 textVeiw 설정
-                countClasses2.setText(pointSum);
+                //              countClasses2.setText(pointSum);
 
                 m00.setText(table[0][0]);
                 m11.setText(table[0][1]);
@@ -454,7 +453,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
                 TextView m000 = findViewById(R.id.monday000);
                 TextView m111 = findViewById(R.id.monday111);
-                TextView m222 =  findViewById(R.id.monday222);
+                TextView m222 = findViewById(R.id.monday222);
                 TextView m333 = findViewById(R.id.monday333);
                 TextView m444 = findViewById(R.id.monday444);
                 TextView m555 = findViewById(R.id.monday555);
@@ -504,7 +503,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 TextView f999 = findViewById(R.id.friday9);
                 // endregion
                 //region 3번째 시간표의 textVeiw 설정
-                countClasses3.setText(pointSum);
+//               countClasses3.setText(pointSum);
 
                 m000.setText(table[0][0]);
                 m111.setText(table[0][1]);
@@ -563,6 +562,8 @@ public class MyScheduleActivity extends AppCompatActivity {
                 //endregion
                 break;
         }
+        //endregion
+
     }
 
     public int pointCount = 0;
@@ -579,17 +580,22 @@ public class MyScheduleActivity extends AppCompatActivity {
 
             String[] catch1 = classInfo.split("_",0); //title, category. when. point
             String title = catch1[0];
-            String when = catch1[2];
-            int point = parseInt(catch1[3]);
+            String when = catch1[7];
+            int point = parseInt(catch1[6]);
 
-            table = updateTable(table, title, when, point);
+            String displayCategory = catch1[1];
+            String displayRoom = catch1[2] + "반";
+            String displayProsessor = catch1[3];
+            String displayPoint = catch1[6] + "학점";
+
+            table = updateTable(table, title, when, point, displayCategory, displayRoom, displayProsessor, displayPoint);
 
         }
 
         return table;
     }
 
-    public  String[][] updateTable(String[][] table, String title, String when, int point){
+    public  String[][] updateTable(String[][] table, String title, String when, int point, String disCate, String disRoom, String disPros, String disPoin){
         boolean GoFlag = true;
         String[] split3;
 
@@ -637,7 +643,7 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
                 split3 = split2[1].split(",",0); // 1 와 2
                 for(int j = 0; j < split3.length; j++) {  // 예) 1 와 2
-                    table[parseInt(split2[0])][parseInt(split3[j])] = title + "_" + Integer.valueOf(point);
+                    table[parseInt(split2[0])][parseInt(split3[j])] = title + "_" + disCate + "_" + disRoom + "_" + disPros + "_" + disPoin;
                 }
             }
         }
@@ -646,17 +652,16 @@ public class MyScheduleActivity extends AppCompatActivity {
     }
 
     // 전필 과목 우선으로 정렬
-    public ArrayList<String> sort(ArrayList<String> rowClasses, int count){
+    public ArrayList<String> sort(ArrayList<String> rowClasses){
         ArrayList<String> others = new ArrayList<>();
         ArrayList<String> sortedClasses = new ArrayList<>();
 
-        for(int i = 0; i < count; i++)
+        for(int i = 0; i < rowClasses.size(); i++)
         {
             String[] tmp = rowClasses.get(i).split("_",0);
             String category = tmp[1];
             if(category.equals("전필")){
                 sortedClasses.add(rowClasses.get(i));
-                //others.add(rowClasses.get(i));
 
             }
             else{

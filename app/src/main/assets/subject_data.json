@@ -367,7 +367,7 @@
     "title": "프로그래밍&응용",
     "serial": "246002",
     "room": "13",
-    "professor": "양수-환",
+    "professor": "양수환",
     "category": "전선",
     "major": "컴퓨터공학부",
     "grade": "컴퓨터공학부(공통)1학년",
@@ -598,7 +598,7 @@
     "limit": "40"
   },
   {
-    "title": "선형대수-학",
+    "title": "선형대수학",
     "serial": "245068",
     "room": "11",
     "professor": "황영섭",
@@ -611,7 +611,7 @@
     "limit": "51"
   },
   {
-    "title": "선형대수-학",
+    "title": "선형대수학",
     "serial": "245068",
     "room": "12",
     "professor": "황영섭",

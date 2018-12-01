@@ -19,11 +19,15 @@ public class BucketActivity extends AppCompatActivity {
         // 전 화면 (과목탐색)에서 보내온 데이터 취득
         Intent thisIntent = getIntent();
         tmpArr = thisIntent.getStringArrayListExtra("selectedClassInfo");
-
+         /* 10개의 정보
+                        this.title[i], this.category[i],
+                        this.room[i], this.professor[i], this.major[i], this.grade[i],
+                        this.point[i], this.when[i], this.where[i], this.limit[i]
+         */
 
         final ArrayList<ClassData> listData = new ArrayList<>();
         for(int i =0; i<tmpArr.size(); i++){
-            String[] tmp2 = tmpArr.get(i).split(",",0);
+            String[] tmp2 = tmpArr.get(i).split("_",0);
             ClassData data = new ClassData(tmp2);
             listData.add(data);
         }
@@ -43,7 +47,7 @@ public class BucketActivity extends AppCompatActivity {
             case R.id.btn_simu:
 
                 Intent scheduleResultIntent = new Intent(BucketActivity.this, MyScheduleActivity.class);
-                scheduleResultIntent.putExtra("becketDatas", tmpArr);
+                scheduleResultIntent.putExtra("bucketData", tmpArr);
                 startActivity(scheduleResultIntent);
                 break;
         }

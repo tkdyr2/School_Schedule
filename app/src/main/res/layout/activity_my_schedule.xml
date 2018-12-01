@@ -1,13 +1,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="@color/origin_backGray"
+    android:fillViewport="true"
+    tools:context=".MyScheduleActivity">
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -20,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@color/origin_liteGray"
             android:orientation="vertical">
 
             <TableRow
@@ -83,17 +85,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="0교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -153,17 +152,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="1교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -221,17 +217,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="2교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -289,17 +282,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="3교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -357,17 +347,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="4교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -425,17 +412,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="5교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -493,17 +477,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="6교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -561,17 +542,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="7교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -629,17 +607,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="8교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -698,17 +673,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="9교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -775,6 +747,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@color/origin_liteGray"
             android:orientation="vertical">
 
             <TableRow
@@ -838,17 +811,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="0교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -908,17 +878,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="1교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -976,17 +943,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="2교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1044,17 +1008,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="3교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1112,17 +1073,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="4교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1180,17 +1138,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="5교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1248,17 +1203,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="6교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1316,17 +1268,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="7교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1384,17 +1333,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="8교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1453,17 +1399,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="9교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1532,6 +1475,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@color/origin_liteGray"
             android:orientation="vertical">
 
             <TableRow
@@ -1595,17 +1539,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="0교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1665,17 +1606,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="1교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1733,17 +1671,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="2교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1801,17 +1736,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="3교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1869,17 +1801,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="4교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -1937,17 +1866,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="5교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -2005,17 +1931,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="6교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -2073,17 +1996,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="7교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -2141,17 +2061,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="8교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -2210,17 +2127,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end"
                     android:text="9교시"
-                    android:textColor="#ffffff"
                     android:textStyle="bold" />
 
                 <TextView
@@ -2280,3 +2194,4 @@
     </LinearLayout>
 
 </ScrollView>
+

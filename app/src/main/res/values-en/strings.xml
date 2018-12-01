@@ -6,5 +6,5 @@
     <string name="bucket_frame_name">Selected Classes</string>
     <string name="RegisteredSchedule_frame_name">My Schedule</string>
     <string name="simulation">Simulate</string>
-
+    <string name="toastMessage">The selected subject was putted into bucket</string>
 </resources>

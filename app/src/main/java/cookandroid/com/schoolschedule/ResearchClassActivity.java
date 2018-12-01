@@ -129,15 +129,24 @@ public class ResearchClassActivity extends AppCompatActivity {
                 CheckBox condition_f = findViewById(R.id.cB_Fri); // 금공강
                 if(condition_m.isChecked()) reqFlag[0] = 1;
                 if(condition_f.isChecked()) reqFlag[1] = 1;
-
                 // endregion
 
                 // 과목 검색 메서드 호출
-                final ArrayList<String[]> tmpArray = searchClasses.searchTheClass(target_title, target_category, target_grade, time_first, time_last, reqFlag);
+                ArrayList<String[]> tmpArr = searchClasses.searchTheClass(target_title, target_category, target_grade, time_first, time_last, reqFlag);
+                final ArrayList<String[]> tmpArr2 = searchClasses.searchTheClass(target_title, target_category, target_grade, time_first, time_last, reqFlag);
                 final ArrayList<ClassData> listData = new ArrayList<>();
                 // ListView에 표시하는 항목을 생성
-                for(int i = 0; i < tmpArray.size(); i++) {
-                    ClassData data = new ClassData(tmpArray.get(i));
+                for(int i = 0; i < tmpArr.size(); i++) {
+                    String[] processing = tmpArr.get(i);
+                    processing[0] = "과목명:" + processing[0];
+                    processing[1] = "구분:" + processing[1];
+                    processing[2] = processing[2] + "반";
+                    processing[3] = "교수:" + processing[3];
+                    processing[6] = processing[6] + "학점";
+                    processing[7] = processing[7] + "교시";
+                    processing[9] = "인원:" + processing[9];
+
+                    ClassData data = new ClassData(processing);
                     listData.add(data);
                 }
 
@@ -148,12 +157,15 @@ public class ResearchClassActivity extends AppCompatActivity {
                 NonScrollListView myClassListView = findViewById(R.id.nonScrollListView1);
                 myClassListView.setAdapter(customAdapter);
 
+
+
                 // 아이템 선택 동작
                 myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                        selectedClassInfoArray.add(tmpArray.get(pos));
-                        Toast.makeText(ResearchClassActivity.this,"선택한 과목이 장바구니에 담아졌습니다.",Toast.LENGTH_SHORT).show();
+                        selectedClassInfoArray.add(tmpArr2.get(pos));
+                        new QuickToastTask(getApplicationContext(), R.string.toastMessage).execute();
+                       // Toast.makeText(ResearchClassActivity.this,"선택한 과목이 장바구니에 담아졌습니다.", Toast.LENGTH_SHORT).show();
 
                         return false;
                     }
@@ -176,10 +188,16 @@ public class ResearchClassActivity extends AppCompatActivity {
         ArrayList<String> tmpString2 = new ArrayList<>();
         for(int i=0; i < selectedClassInfoArray.size(); i++){
             String[] tmpString1 = selectedClassInfoArray.get(i);
-            tmpString2.add(tmpString1[0] + "," + tmpString1[2]+ "," + tmpString1[3] + "," +
-                    tmpString1[4]+ "," + tmpString1[5]+ "," + tmpString1[6]+ "," +
-                    tmpString1[7]+ "," + tmpString1[8]+ "," + tmpString1[9]);
+            tmpString2.add(tmpString1[0] + "_" + tmpString1[1]+ "_" + tmpString1[2] + "_" + tmpString1[3] + "_" +
+                    tmpString1[4]+ "_" + tmpString1[5]+ "_" + tmpString1[6]+ "_" +
+                    tmpString1[7]+ "_" + tmpString1[8]+ "_" + tmpString1[9]);
         }
+        /* tmpString2에 들어가 있는 10개의 정보
+                     this.title[i], this.category[i],this.room[i], this.professor[i],
+                     this.major[i], this.grade[i],this.point[i],
+                     this.when[i], this.where[i], this.limit[i]
+         */
+
         return tmpString2;
     }
 

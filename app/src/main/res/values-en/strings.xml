@@ -4,7 +4,12 @@
     <string name="result_frame_name">Result of Simulation</string>
     <string name="research_frame_name">Search Classes</string>
     <string name="bucket_frame_name">Selected Classes</string>
-    <string name="RegisteredSchedule_frame_name">My Schedule</string>
+    <string name="RegisteredSchedule_frame_name">My schedule</string>
     <string name="simulation">Simulate</string>
-    <string name="toastMessage">The selected subject was putted into bucket</string>
+    <string name="toastMessageSelected">The selected subject was putted into bucket</string>
+    <string name="toastMessageRegistered">The selected schedule was registered as My schedule</string>
+    <string name="goToRegistered">Go to my schedule</string>
+    <string name="emptyMessage1">You have no tables here yet</string>
+    <string name="emptyMessage2">Please simulate your schedule\nand select some of them as My schedule</string>
+    <string name="introduceMessage">Thinking of a schedule is troublesome,\n\n is not it?\n\nSo this app show you\n\n optimal timetables :)</string>
 </resources>

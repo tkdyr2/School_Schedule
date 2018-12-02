@@ -3,59 +3,59 @@ package cookandroid.com.schoolschedule;
 import java.util.Random;
 
 public class ClassData {
-    private long id;
-    private String title;
-    private String serial;
-    private String room;
-    private String professor;
-    private String category;
-    private String major;
-    private String grade;
-    private String point;
-    private String when;
-    private String where;
-    private String limit;
+    private long _id;
+    private String _title;
+    private String _serial;
+    private String _room;
+    private String _professor;
+    private String _category;
+    private String _major;
+    private String _grade;
+    private String _point;
+    private String _when;
+    private String _where;
+    private String _limit;
 
     // constructor
     public ClassData(String[] classInfo){
-        this.id = (new Random()).nextLong();
-        this.title = classInfo[0];
-        this.serial = classInfo[1];
-        this.room = classInfo[2];
-        this.professor = classInfo[3];
-        this.major = classInfo[4];
-        this.grade = classInfo[5];
-        this.point = classInfo[6];
-        this.when = classInfo[7];
-        this.where = classInfo[8];
-        this.limit = classInfo[9];
+        this._id = (new Random()).nextLong();
+        this._title = classInfo[0];
+        this._serial = classInfo[1];
+        this._room = classInfo[2];
+        this._professor = classInfo[3];
+        this._major = classInfo[4];
+        this._grade = classInfo[5];
+        this._point = classInfo[6];
+        this._when = classInfo[7];
+        this._where = classInfo[8];
+        this._limit = classInfo[9];
     }
 
 
     // getter
-    public long getId(){ return id; }
-    public String getTitle() { return title; }
-    public String getSerial() { return serial; }
-    public String getRoom() { return room; }
-    public String getProfessor() { return professor; }
-    public String getCategory() { return category; }
-    public String getMajor() { return major; }
-    public String getGrade() { return grade; }
-    public String getPoint() { return point; }
-    public String getWhen() { return when; }
-    public String getWhere() { return where; }
-    public String getLimit() { return limit; }
+    public long getId(){ return _id; }
+    public String getTitle() { return _title; }
+    public String getSerial() { return _serial; }
+    public String getRoom() { return _room; }
+    public String getProfessor() { return _professor; }
+    public String getCategory() { return _category; }
+    public String getMajor() { return _major; }
+    public String getGrade() { return _grade; }
+    public String getPoint() { return _point; }
+    public String getWhen() { return _when; }
+    public String getWhere() { return _where; }
+    public String getLimit() { return _limit; }
 
     // setter
-    public void setTitle(String title) { this.title = title; }
-    public void setSerial(String serial) { this.serial = serial; }
-    public void setRoom(String room) { this.room = room; }
-    public void setProfessor(String professor) { this.serial = professor; }
-    public void setCategory(String category) { this.category = category; }
-    public void setMajor(String major) { this.major = major; }
-    public void setGrade(String grade) { this.grade = grade; }
-    public void setPoint(String point) { this.point = point; }
-    public void setWhen(String when) { this.when = when; }
-    public void setWhere(String where) { this.where = where; }
-    public void setLimit(String limit) { this.limit = limit; }
+    public void setTitle(String title) { this._title = title; }
+    public void setSerial(String serial) { this._serial = serial; }
+    public void setRoom(String room) { this._room = room; }
+    public void setProfessor(String professor) { this._serial = professor; }
+    public void setCategory(String category) { this._category = category; }
+    public void setMajor(String major) { this._major = major; }
+    public void setGrade(String grade) { this._grade = grade; }
+    public void setPoint(String point) { this._point = point; }
+    public void setWhen(String when) { this._when = when; }
+    public void setWhere(String where) { this._where = where; }
+    public void setLimit(String limit) { this._limit = limit; }
 }

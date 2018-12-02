@@ -164,8 +164,7 @@ public class ResearchClassActivity extends AppCompatActivity {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long l) {
                         selectedClassInfoArray.add(tmpArr2.get(pos));
-                        new QuickToastTask(getApplicationContext(), R.string.toastMessage).execute();
-                       // Toast.makeText(ResearchClassActivity.this,"선택한 과목이 장바구니에 담아졌습니다.", Toast.LENGTH_SHORT).show();
+                        new QuickToastTask(getApplicationContext(), R.string.toastMessageSelected).execute();
 
                         return false;
                     }

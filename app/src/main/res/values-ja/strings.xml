@@ -6,7 +6,10 @@
     <string name="bucket_frame_name">選択した科目</string>
     <string name="RegisteredSchedule_frame_name">マイ時間割</string>
     <string name="simulation">シミュレーション</string>
-
-
-
+    <string name="toastMessageSelected">選択された科目がカゴに追加されました</string>
+    <string name="toastMessageRegistered">選択された時間割がマイ時間割に登録されました</string>
+    <string name="goToRegistered">マイ時間割 確認</string>
+    <string name="emptyMessage1">登録された時間割がありません</string>
+    <string name="emptyMessage2">まず時間割シミュレーションをし、\n気に入った時間割を登録してください</string>
+    <string name="introduceMessage">時間割を考えるのって\n\n結構たいへんですよね\n\n好きな科目を選ぶだけで\n\n最適な時間割候補を\n\nあなたに提案します</string>
 </resources>

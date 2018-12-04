@@ -11,5 +11,6 @@ public class RegisteredScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registered_schedule);
 
 
+
     }
 }

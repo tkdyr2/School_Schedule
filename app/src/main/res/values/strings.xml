@@ -5,7 +5,12 @@
     <string name="bucket_frame_name">장바구니</string>
     <string name="RegisteredSchedule_frame_name">나의 시간표</string>
     <string name="simulation">시뮬레이션</string>
-
+    <string name="toastMessageSelected">선택한 과목이 장바구니에 담아졌습니다.</string>
+    <string name="toastMessageRegistered">선택한 시간표가 나의 시간표에 등록 되었습니다.</string>
+    <string name="goToRegistered">나의 시간표 확인</string>
+    <string name="emptyMessage1">아직 등록된 시간표가 없습니다</string>
+    <string name="emptyMessage2">먼저 시간표 시뮬레이션을 하고\n마음에 드는 시간표를 등록해주세요.</string>
+    <string name="introduceMessage">정말 귀찮죠??\n\n 수강 과목 시간표 짜기\n\n앞으로는 자동으로\n\n 해결할 수 있어요</string>
     <string-array name="spi_time_array">
         <item>선택</item>
         <item>0</item>
@@ -25,47 +30,47 @@
     </string-array>
     <string-array name="spi_major_array">
         <item>컴퓨터공학부</item>
-        <item>it경영학과 </item>
-        <item>간호학과  </item>
-        <item>건축사회환경학부 </item>
-        <item>교양선택           </item>
-        <item>교양필수 및 선택          </item>
+        <item>IT경영학과</item>
+        <item>간호학과</item>
+        <item>건축사회환경학부</item>
+        <item>교양선택</item>
+        <item>교양필수 및 선택</item>
         <item>교양필수(기초교양)</item>
-        <item>교직       </item>
-        <item>국제경제통산학과       </item>
-        <item>국제관계,행정학과           </item>
-        <item>국제레저관광학과           </item>
-        <item>글로벌경영학과           </item>
-        <item>글로벌창의융합전공           </item>
-        <item>글로벌한국학과           </item>
-        <item>글로벌행정학과(야)           </item>
-        <item>기계ict융합공학부          </item>
-        <item>기초과학           </item>
-        <item>나노화학과           </item>
-        <item>물리치료학과           </item>
-        <item>미디어커뮤니케이션학과           </item>
-        <item>법.경찰학과           </item>
-        <item>산업경영공학과           </item>
-        <item>상담심리사회복지학과           </item>
-        <item>서비스러닝           </item>
-        <item>스마트자동차공학부           </item>
-        <item>스포츠.과학과           </item>
-        <item>시각디자인학과           </item>
-        <item>식품.수산학부           </item>
-        <item>신소재공학과           </item>
-        <item>역사문화콘텐츠학과           </item>
-        <item>연계전공           </item>
-        <item>외국어자율잔공학과           </item>
-        <item>응급구조학과           </item>
-        <item>이공계열 공통          </item>
-        <item>일반 선택           </item>
-        <item>전자공학과           </item>
-        <item>제약생명학과           </item>
-        <item>졸엄유예자전용           </item>
-        <item>치위생학과           </item>
-        <item>학군단           </item>
-        <item>현장실습           </item>
-        <item>환경생명화학공학과           </item>
+        <item>교직</item>
+        <item>국제경제통산학과</item>
+        <item>국제관계,행정학과</item>
+        <item>국제레저관광학과</item>
+        <item>글로벌경영학과</item>
+        <item>글로벌창의융합전공</item>
+        <item>글로벌한국학과</item>
+        <item>글로벌행정학과(야)</item>
+        <item>기계ict융합공학부</item>
+        <item>기초과학</item>
+        <item>나노화학과</item>
+        <item>물리치료학과</item>
+        <item>미디어커뮤니케이션학과</item>
+        <item>법.경찰학과</item>
+        <item>산업경영공학과</item>
+        <item>상담심리사회복지학과</item>
+        <item>서비스러닝</item>
+        <item>스마트자동차공학부</item>
+        <item>스포츠.과학과</item>
+        <item>시각디자인학과</item>
+        <item>식품.수산학부</item>
+        <item>신소재공학과</item>
+        <item>역사문화콘텐츠학과</item>
+        <item>연계전공</item>
+        <item>외국어자율잔공학과</item>
+        <item>응급구조학과</item>
+        <item>이공계열 공통</item>
+        <item>일반 선택</item>
+        <item>전자공학과</item>
+        <item>제약생명학과</item>
+        <item>졸엄유예자전용</item>
+        <item>치위생학과</item>
+        <item>학군단</item>
+        <item>현장실습</item>
+        <item>환경생명화학공학과</item>
 
 
     </string-array>
@@ -79,8 +84,6 @@
         <item>사제동행세미나</item>
         <item>학기</item>
         <item>균형3</item>
-
-
     </string-array>
 
     <string-array name="spi_grade_array">

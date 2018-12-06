@@ -194,8 +194,7 @@ public class ResearchClassActivity extends AppCompatActivity {
         /* tmpString2에 들어가 있는 10개의 정보
                      this.title[i], this.category[i],this.room[i], this.professor[i],
                      this.major[i], this.grade[i],this.point[i],
-                     this.when[i], this.where[i], this.limit[i]
-         */
+                     this.when[i], this.where[i], this.limit[i] */
 
         return tmpString2;
     }

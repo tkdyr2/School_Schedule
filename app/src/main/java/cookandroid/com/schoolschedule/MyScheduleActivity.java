@@ -14,7 +14,7 @@ import static java.lang.Integer.parseInt;
 
 public class MyScheduleActivity extends AppCompatActivity {
     public int classTime = 14;
-    public int pointLimit = 22; // 19, 16
+    public int pointLimit;
     public final ArrayList<String[][]> registeredClassInfoArray = new ArrayList<>();
 
     @Override
@@ -24,6 +24,7 @@ public class MyScheduleActivity extends AppCompatActivity {
 
         Intent thisintent = getIntent();
         ArrayList<String> tmp = thisintent.getStringArrayListExtra("bucketData");
+        pointLimit = parseInt(thisintent.getStringExtra("pointLimit"));
 
           /* 10개의 정보
                         this.title[i], this.category[i],
@@ -31,18 +32,17 @@ public class MyScheduleActivity extends AppCompatActivity {
                         this.point[i], this.when[i], this.where[i], this.limit[i]
          */
 
-
         ArrayList<String[][]> simuSamples = new ArrayList<>();
 
         // 경우 (sample)를 생성
         int sampleNum = 10;
         for(int n = 0; n < sampleNum; n++){
-            tmp = sort(tmp); // ArrayList의 과목 순서를 결정
+            tmp = sort(tmp);                  // ArrayList의 과목 순서를 결정
             String[][] table = setTable(tmp); // table에 과목 정보 넣기
-            simuSamples.add(table); // table를 ArrayList에 추가
+            simuSamples.add(table);           // table를 ArrayList에 추가
         }
 
-        simuSamples = simuSamplesSort(simuSamples); // table의 우선순위를 맺음
+        simuSamples = simuSamplesSort(simuSamples); // table의 우선순위를 맺음 (중간 공백 시간, 학점으로)
 
 
         //TODO: 총 학점 표시
@@ -52,10 +52,8 @@ public class MyScheduleActivity extends AppCompatActivity {
             point[g] = 0;
         }
 
-        //TODO: 要確認
         //시간표 중북 검사 및 제거
         boolean[] notSameFlag = new boolean[simuSamples.size()]; // 초기값 false
-
         for(int v = 0; v < simuSamples.size() - 1; v++){
             for(int b = v + 1; b < simuSamples.size(); b++){
                 String[][] tableA = simuSamples.get(v);
@@ -70,6 +68,7 @@ public class MyScheduleActivity extends AppCompatActivity {
             }
         }
 
+        // 표시 할 시간표 정리
         final ArrayList<String[][]> dispTableList = new ArrayList<>();
         // 표시를 위해 정리
         for(int i = 0; i < simuSamples.size(); i++){
@@ -82,15 +81,15 @@ public class MyScheduleActivity extends AppCompatActivity {
             if(notSameFlag[i]) dispTableList.add(dispTable);
         }
 
-
         // 시간표의 총 과목 수, 총 학점 수
         int[] Assumption = {0,0};
-        // ListView로 시간표 표시
+        //region ListView로 시간표 표시
         final ArrayList<TableData> tableData = new ArrayList<>();
         for(int i = 0; i < dispTableList.size(); i++) {
-        TableData data = new TableData(dispTableList.get(i), Assumption);
-        tableData.add(data);
-    }
+            TableData data = new TableData(dispTableList.get(i), Assumption);
+            tableData.add(data);
+        }
+
         // customScheduleAdapter 생성 (R.layout.schedule_layout : 자기가 만든 리스트뷰 레이아웃)
         final MyScheduleAdapter customScheduleAdapter = new MyScheduleAdapter(this,tableData,R.layout.schedule_layout);
 
@@ -98,6 +97,7 @@ public class MyScheduleActivity extends AppCompatActivity {
         NonScrollListView myClassListView = findViewById(R.id.nonScrollListView3);
         myClassListView.setAdapter(customScheduleAdapter);
 
+        //endregion
 
         // 아이템 선택 동작
         myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -108,7 +108,6 @@ public class MyScheduleActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
     public void onGoToRegisteredClick(View view) {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -45,9 +46,11 @@ public class BucketActivity extends AppCompatActivity {
     public void onSimuButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_simu:
-
+                EditText edit = findViewById(R.id.userInput);
+                String userPontLimit = edit.getText().toString();
                 Intent scheduleResultIntent = new Intent(BucketActivity.this, MyScheduleActivity.class);
                 scheduleResultIntent.putExtra("bucketData", tmpArr);
+                scheduleResultIntent.putExtra("pointLimit", userPontLimit);
                 startActivity(scheduleResultIntent);
                 break;
         }

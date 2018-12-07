@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,9 +22,9 @@ public class BucketActivity extends AppCompatActivity {
         Intent thisIntent = getIntent();
         tmpArr = thisIntent.getStringArrayListExtra("selectedClassInfo");
          /* 10개의 정보
-                        this.title[i], this.category[i],
-                        this.room[i], this.professor[i], this.major[i], this.grade[i],
-                        this.point[i], this.when[i], this.where[i], this.limit[i]
+                     this.title[i], this.category[i],this.room[i], this.professor[i],
+                     this.major[i], this.grade[i],this.point[i],
+                     this.when[i], this.where[i], this.limit[i]
          */
 
         final ArrayList<ClassData> listData = new ArrayList<>();
@@ -48,10 +49,16 @@ public class BucketActivity extends AppCompatActivity {
             case R.id.btn_simu:
                 EditText edit = findViewById(R.id.userInput);
                 String userPontLimit = edit.getText().toString();
-                Intent scheduleResultIntent = new Intent(BucketActivity.this, MyScheduleActivity.class);
-                scheduleResultIntent.putExtra("bucketData", tmpArr);
-                scheduleResultIntent.putExtra("pointLimit", userPontLimit);
-                startActivity(scheduleResultIntent);
+                if(!userPontLimit.equals("")){
+                    Intent scheduleResultIntent = new Intent(BucketActivity.this, MyScheduleActivity.class);
+                    scheduleResultIntent.putExtra("bucketData", tmpArr);
+                    scheduleResultIntent.putExtra("pointLimit", userPontLimit);
+                    startActivity(scheduleResultIntent);
+                }
+                else{
+                    Toast.makeText(this, R.string.pleaseInputMessage,Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
     }

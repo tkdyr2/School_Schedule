@@ -27,9 +27,9 @@ public class MyScheduleActivity extends AppCompatActivity {
         pointLimit = parseInt(thisintent.getStringExtra("pointLimit"));
 
           /* 10개의 정보
-                        this.title[i], this.category[i],
-                        this.room[i], this.professor[i], this.major[i], this.grade[i],
-                        this.point[i], this.when[i], this.where[i], this.limit[i]
+                          this.title[i], this.category[i],this.room[i], this.professor[i],
+                     this.major[i], this.grade[i],this.point[i],
+                     this.when[i], this.where[i], this.limit[i]
          */
 
         ArrayList<String[][]> simuSamples = new ArrayList<>();
@@ -43,14 +43,7 @@ public class MyScheduleActivity extends AppCompatActivity {
         }
 
         simuSamples = simuSamplesSort(simuSamples); // table의 우선순위를 맺음 (중간 공백 시간, 학점으로)
-
-
-        //TODO: 총 학점 표시
-        int tableNum = 3;
-        int[] point = new int[simuSamples.size()];
-        for(int g=0; g < simuSamples.size(); g++){
-            point[g] = 0;
-        }
+        ArrayList<String[][]> simuSamples2 = simuSamplesSort(simuSamples);
 
         //시간표 중북 검사 및 제거
         boolean[] notSameFlag = new boolean[simuSamples.size()]; // 초기값 false
@@ -68,8 +61,21 @@ public class MyScheduleActivity extends AppCompatActivity {
             }
         }
 
-        // 표시 할 시간표 정리
+
         final ArrayList<String[][]> dispTableList = new ArrayList<>();
+
+        ArrayList<String[][]> dispTableList2 = new ArrayList<>();
+        ArrayList<int[]> assumptionList = new ArrayList<>();
+        //TODO: 총 학점, 과목 수 표시
+        for(int m=0; m < simuSamples2.size(); m++){
+            String[][] dispTable2 = simuSamples2.get(m);
+            if(notSameFlag[m]) dispTableList2.add(dispTable2);
+        }
+        for(int i = 0; i < dispTableList2.size(); i++) {
+            assumptionList.add(getNumPointAndClasses(dispTableList2.get(i)));
+        }
+
+
         // 표시를 위해 정리
         for(int i = 0; i < simuSamples.size(); i++){
             String[][] dispTable = simuSamples.get(i);
@@ -81,12 +87,12 @@ public class MyScheduleActivity extends AppCompatActivity {
             if(notSameFlag[i]) dispTableList.add(dispTable);
         }
 
-        // 시간표의 총 과목 수, 총 학점 수
-        int[] Assumption = {0,0};
+
+
         //region ListView로 시간표 표시
         final ArrayList<TableData> tableData = new ArrayList<>();
         for(int i = 0; i < dispTableList.size(); i++) {
-            TableData data = new TableData(dispTableList.get(i), Assumption);
+            TableData data = new TableData(dispTableList.get(i), assumptionList.get(i));
             tableData.add(data);
         }
 
@@ -108,6 +114,41 @@ public class MyScheduleActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public  int[] getNumPointAndClasses(String[][] dispTable){
+        int[] tmpNum = {0,0};
+        int n = 0;
+        String[] titleTmp = new String[5*classTime];
+        String[] pointTmp = new String[5*classTime];
+        for (int x = 0; x < 5; x++){
+            for(int y = 0; y < classTime; y++){
+                if(dispTable[x][y] != null) {
+                    String[] hoge = dispTable[x][y].split("_",0);
+                    titleTmp[n] = hoge[0];
+                    pointTmp[n] = hoge[4].replace("학점","");
+                    n++;
+                }
+            }
+        }
+        for (int i = 0; i < titleTmp.length-1; i++) {
+            for(int j = i + 1; j < titleTmp.length; j++){
+                if(titleTmp[i] != null && titleTmp[j] != null){
+                    if(titleTmp[i].equals(titleTmp[j])){
+                        titleTmp[j] = null;
+                        pointTmp[j] = null;
+                    }
+                }
+            }
+        }
+        for (String tmp: pointTmp) {
+            if(tmp != null){
+                tmpNum[0] += parseInt(tmp);
+                tmpNum[1]++;
+            }
+        }
+
+        return tmpNum;
     }
 
     public void onGoToRegisteredClick(View view) {
@@ -252,7 +293,7 @@ public class MyScheduleActivity extends AppCompatActivity {
         for (String classInfo: str) {
             if(pointCount >= pointLimit) break;
 
-            String[] catch1 = classInfo.split("_",0); //title, category. when. point
+            String[] catch1 = classInfo.split("_",0);
             String title = catch1[0];
             String when = catch1[7];
             int point = parseInt(catch1[6]);

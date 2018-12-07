@@ -11,6 +11,7 @@
     <string name="emptyMessage1">아직 등록된 시간표가 없습니다</string>
     <string name="emptyMessage2">먼저 시간표 시뮬레이션을 하고\n마음에 드는 시간표를 등록해주세요.</string>
     <string name="introduceMessage">정말 귀찮죠??\n\n 수강 과목 시간표 짜기\n\n앞으로는 자동으로\n\n 해결할 수 있어요</string>
+    <string name="pleaseInputMessage">희망 취득 학점을 입력해주세요</string>
     <string-array name="spi_time_array">
         <item>선택</item>
         <item>0</item>

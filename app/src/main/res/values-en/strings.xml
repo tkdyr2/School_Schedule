@@ -12,4 +12,5 @@
     <string name="emptyMessage1">You have no tables here yet</string>
     <string name="emptyMessage2">Please simulate your schedule\nand select some of them as My schedule</string>
     <string name="introduceMessage">Thinking of a schedule is troublesome,\n\n is not it?\n\nSo this app show you\n\n optimal timetables :)</string>
+    <string name="pleaseInputMessage">Please input the number of point you want</string>
 </resources>

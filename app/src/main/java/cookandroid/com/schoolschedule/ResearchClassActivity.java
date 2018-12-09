@@ -203,8 +203,14 @@ public class ResearchClassActivity extends AppCompatActivity {
     public void onBucketButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bucket:
+                // 로컬 파일에 장바구니 리스트 저장
+                FileIO fileIO = new FileIO(this);
+                String dataFileName = "bucketData.txt";
+                fileIO.storeClassDataToFile(getStringArray(), dataFileName);
+
+                // 장바구니 화면에 이동
                 Intent bucketIntent = new Intent(ResearchClassActivity.this, BucketActivity.class);
-                bucketIntent.putExtra("selectedClassInfo", getStringArray());
+//                bucketIntent.putExtra("selectedClassInfo", getStringArray());
                 startActivity(bucketIntent);
                 break;
         }

@@ -16,6 +16,7 @@ public class MyScheduleActivity extends AppCompatActivity {
     public int classTime = 14;
     public int pointLimit;
     public final ArrayList<String[][]> registeredClassInfoArray = new ArrayList<>();
+    public final ArrayList<String> registeredAssumptionList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +64,10 @@ public class MyScheduleActivity extends AppCompatActivity {
 
 
         final ArrayList<String[][]> dispTableList = new ArrayList<>();
-
+        final ArrayList<int[]> assumptionList = new ArrayList<>();
         ArrayList<String[][]> dispTableList2 = new ArrayList<>();
-        ArrayList<int[]> assumptionList = new ArrayList<>();
-        //TODO: 총 학점, 과목 수 표시
+
+        //총 학점, 과목 수 표시
         for(int m=0; m < simuSamples2.size(); m++){
             String[][] dispTable2 = simuSamples2.get(m);
             if(notSameFlag[m]) dispTableList2.add(dispTable2);
@@ -110,6 +111,9 @@ public class MyScheduleActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long l) {
                 registeredClassInfoArray.add(dispTableList.get(pos));
+                int[] hoge = assumptionList.get(pos);
+                String hoge2 = hoge[0] + "," + hoge[1];
+                registeredAssumptionList.add(hoge2);
                 new QuickToastTask(getApplicationContext(), R.string.toastMessageRegistered).execute();
                 return false;
             }
@@ -154,11 +158,41 @@ public class MyScheduleActivity extends AppCompatActivity {
     public void onGoToRegisteredClick(View view) {
         switch (view.getId()) {
             case R.id.goToRegistered:
+                ArrayList<String> regiList = remakeStringListToString(registeredClassInfoArray);
+
+                // 로컬 파일에 나의 시간표 리스트 저장
+                FileIO fileIO = new FileIO(this);
+                String dataFileName = "registeredData.txt";
+                fileIO.storeClassDataToFile(regiList, dataFileName);
+
                 Intent registeredIntent = new Intent(MyScheduleActivity.this, RegisteredScheduleActivity.class);
-                registeredIntent.putExtra("registeredClassInfo", registeredClassInfoArray);
+                registeredIntent.putExtra("assumptionList", registeredAssumptionList);
                 startActivity(registeredIntent);
                 break;
         }
+    }
+
+    public ArrayList<String> remakeStringListToString(ArrayList<String[][]> tmp){
+        ArrayList<String> returnList = new ArrayList<>();
+        String tmpString = "";
+        for(int i = 0; i < tmp.size(); i++){
+            String[][] tmpStringArray = tmp.get(i);
+            for(int y=0; y < classTime; y++){
+                for(int x = 0; x < 5; x++){
+                    if(tmpStringArray[x][y] == null) {
+                        tmpStringArray[x][y] = "empty";
+                        tmpString += tmpStringArray[x][y] + "\t";
+                    }
+                    else{
+                        tmpString += tmpStringArray[x][y] + "\t";
+                    }
+                }
+            }
+         //   System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+        //    System.out.println(tmpString);
+            returnList.add(tmpString);
+        }
+        return returnList;
     }
 
     public ArrayList<String[][]> simuSamplesSort(ArrayList<String[][]> simuSamples){

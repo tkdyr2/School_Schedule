@@ -13,4 +13,5 @@
     <string name="emptyMessage2">まず時間割シミュレーションをし、\n気に入った時間割を登録してください</string>
     <string name="introduceMessage">時間割を考えるのって\n\n結構たいへんですよね\n\n好きな科目を選ぶだけで\n\n最適な時間割候補を\n\nあなたに提案します</string>
     <string name="pleaseInputMessage">希望の取得単位を入力してください</string>
+    <string name="bucketCleanMessage">カゴの中の全ての科目を消去しますか？</string>
 </resources>

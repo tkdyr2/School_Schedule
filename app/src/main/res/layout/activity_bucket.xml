@@ -12,12 +12,37 @@ tools:context=".BucketActivity">
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
     <cookandroid.com.schoolschedule.NonScrollListView
         android:id="@+id/nonScrollListView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </cookandroid.com.schoolschedule.NonScrollListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="희망 취득 학점 : "
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/userInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 
 
     <LinearLayout
@@ -27,18 +52,17 @@ tools:context=".BucketActivity">
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="30dp"
+            android:id="@+id/btn_reset"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/menu_button_result_state"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/trush"
+            android:onClick="onCleanListButtonClick"
             android:padding="10dp"
-            android:text="←과목검색"
-            android:onClick="onBackButtonClick"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/Black"
             android:textSize="24sp" />
 
         <Button

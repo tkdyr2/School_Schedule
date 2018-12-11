@@ -4,33 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
+    android:background="@color/origin_backGray"
     android:orientation="vertical"
     tools:context=".RegisteredScheduleActivity">
 
-    <TextView
-        android:id="@+id/textView3"
+    <FrameLayout
+        android:id="@+id/frame_contents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/emptyMessage1"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        android:visibility="invisible">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:contentDescription="@string/emptyMessage1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        app:srcCompat="@drawable/empty" />
 
-    <TextView
-        android:id="@+id/emptyMessage"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <cookandroid.com.schoolschedule.NonScrollListView
+                    android:id="@+id/nonScrollListView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                </cookandroid.com.schoolschedule.NonScrollListView>
+
+                <Button
+                    android:id="@+id/delete_btn"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/trush"
+                    android:onClick="onDeleteButtonClick" />
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_empty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/emptyMessage2"
-        android:textAlignment="center"
-        android:textColor="@color/origin_backGray"
-        android:textSize="18sp" />
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/emptyMessage1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:contentDescription="@string/emptyMessage1"
+                app:srcCompat="@drawable/empty" />
+
+            <TextView
+                android:id="@+id/emptyMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/emptyMessage2"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </FrameLayout>
+
 </LinearLayout>

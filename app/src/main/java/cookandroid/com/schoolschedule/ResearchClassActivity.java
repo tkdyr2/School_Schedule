@@ -194,8 +194,7 @@ public class ResearchClassActivity extends AppCompatActivity {
         /* tmpString2에 들어가 있는 10개의 정보
                      this.title[i], this.category[i],this.room[i], this.professor[i],
                      this.major[i], this.grade[i],this.point[i],
-                     this.when[i], this.where[i], this.limit[i]
-         */
+                     this.when[i], this.where[i], this.limit[i] */
 
         return tmpString2;
     }
@@ -204,8 +203,14 @@ public class ResearchClassActivity extends AppCompatActivity {
     public void onBucketButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bucket:
+                // 로컬 파일에 장바구니 리스트 저장
+                FileIO fileIO = new FileIO(this);
+                String dataFileName = "bucketData.txt";
+                fileIO.storeClassDataToFile(getStringArray(), dataFileName);
+
+                // 장바구니 화면에 이동
                 Intent bucketIntent = new Intent(ResearchClassActivity.this, BucketActivity.class);
-                bucketIntent.putExtra("selectedClassInfo", getStringArray());
+//                bucketIntent.putExtra("selectedClassInfo", getStringArray());
                 startActivity(bucketIntent);
                 break;
         }

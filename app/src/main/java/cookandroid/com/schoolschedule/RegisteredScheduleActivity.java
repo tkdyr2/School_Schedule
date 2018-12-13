@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -69,33 +69,30 @@ public class RegisteredScheduleActivity extends AppCompatActivity {
             }
 
 
-            //region ListView로 시간표 표시
             final ArrayList<TableData> tableData = new ArrayList<>();
-            for(int i = 0; i < tableList.size(); i++) {
-                TableData data = new TableData(tableList.get(i), assu.get(i));
-                tableData.add(data);
+            final MyScheduleAdapter customScheduleAdapter;
+            NonScrollListView myClassListView;
+
+            if(tableList.size()!=tmpAssu.size()){
+                Toast.makeText(this,"発火", Toast.LENGTH_LONG).show();
+            }
+            else{
+                //region ListView로 시간표 표시
+
+                for(int i = 0; i < tableList.size(); i++) {
+                    TableData data = new TableData(tableList.get(i), assu.get(i));
+                    tableData.add(data);
+                }
+
+                // customScheduleAdapter 생성 (R.layout.schedule_layout : 자기가 만든 리스트뷰 레이아웃)
+                customScheduleAdapter = new MyScheduleAdapter(this,tableData,R.layout.schedule_layout);
+
+                // ListView를 취득
+                myClassListView = findViewById(R.id.nonScrollListView4);
+                myClassListView.setAdapter(customScheduleAdapter);
+                //endregion
             }
 
-            // customScheduleAdapter 생성 (R.layout.schedule_layout : 자기가 만든 리스트뷰 레이아웃)
-            final MyScheduleAdapter customScheduleAdapter = new MyScheduleAdapter(this,tableData,R.layout.schedule_layout);
-
-            // ListView를 취득
-            NonScrollListView myClassListView = findViewById(R.id.nonScrollListView4);
-            myClassListView.setAdapter(customScheduleAdapter);
-            //endregion
-
-            final boolean[] removeList = new boolean[tableData.size()];
-
-            // 아이템 선택 동작
-            myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                    // 로컬 파일에서 해당 시간표를 삭제하고 reload
-//                removeList[pos] = true;
-//                new QuickToastTask(getApplicationContext(), R.string.toastMessageRegistered).execute();
-                    return false;
-                }
-            });
         }
     }
 

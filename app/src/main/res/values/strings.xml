@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SchoolSchedule</string>
+    <string name="app_name">SchoolScheduler</string>
     <string name="result_frame_name">시뮬레이션 결과 시간표</string>
     <string name="research_frame_name">과목검색</string>
     <string name="bucket_frame_name">장바구니</string>
@@ -14,6 +14,8 @@
     <string name="introduceMessage">정말 귀찮죠??\n\n 수강 과목 시간표 짜기\n\n앞으로는 자동으로\n\n 해결할 수 있어요</string>
     <string name="pleaseInputMessage">희망 취득 학점을 입력해주세요</string>
     <string name="bucketCleanMessage">장바구니 안의 모든 과목을 지우겠습니까?</string>
+    <string name="mainTitle">수강\n시간표\n시뮬레이션</string>
+    <string name="simuErrorMessage">시간표 시뮬레이션에 실패했습니다.\n희망 취득 학점에 비해 선택된 과목이 부족합니다.</string>
 
     <string-array name="spi_time_array">
         <item>선택</item>
@@ -34,10 +36,6 @@
     </string-array>
     <string-array name="spi_major_array">
         <item>컴퓨터공학부</item>
-        <item>교양필수(기초교양)</item>
-        <item>물리치료학과</item>
-        <item>시각디자인학과</item>
-        <item>신학순결학과</item>
     </string-array>
 
     <string-array name="spi_kindOfClass_array">
@@ -46,9 +44,37 @@
         <item>전필</item>
         <item>영어</item>
         <item>전문ICT</item>
-        <item>사제동행세미나</item>
+        <item>사제</item>
         <item>학기</item>
-        <item>균형3</item>
+    </string-array>
+
+    <string-array name="spi_kindOfClass_array_2">
+        <item>이수구분1</item>
+        <item>현통</item>
+        <item>인성</item>
+    </string-array>
+
+    <string-array name="spi_kindOfClass_array_3">
+        <item>이수구분</item>
+        <item>전선</item>
+        <item>전필</item>
+        <item>사제</item>
+        <item>학기</item>
+    </string-array>
+
+    <string-array name="spi_kindOfClass_array_4">
+        <item>이수구분</item>
+        <item>전선</item>
+        <item>전필</item>
+        <item>사제</item>
+        <item>학기</item>
+    </string-array>
+
+    <string-array name="spi_kindOfClass_array_5">
+        <item>이수구분</item>
+        <item>전선</item>
+        <item>현통</item>
+        <item>학기</item>
     </string-array>
 
     <string-array name="spi_grade_array">
@@ -59,4 +85,21 @@
         <item>4학년</item>
     </string-array>
 
+    <string-array name="spi_grade_array_2">
+        <item>이수구분2</item>
+        <item>공동체인성(현통)</item>
+        <item>공동체인성(공동체와세계시민)</item>
+    </string-array>
+
+    <string-array name="spi_grade_array_3">
+        <item>학년 공통</item>
+    </string-array>
+
+    <string-array name="spi_grade_array_4">
+        <item>학년 공통</item>
+    </string-array>
+
+    <string-array name="spi_grade_array_5">
+        <item>학년 공통</item>
+    </string-array>
 </resources>

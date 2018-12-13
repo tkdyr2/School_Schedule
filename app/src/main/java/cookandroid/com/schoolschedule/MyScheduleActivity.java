@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,26 +61,32 @@ public class MyScheduleActivity extends AppCompatActivity {
         }
         //endregion
 
-        // 중간 공백시간으로 필터
+        //region 시간표 중북 검사 및 제거
         simuSamples = simuSamplesSort(newSimuSamples);
         ArrayList<String[][]> simuSamples2 = simuSamplesSort(simuSamples);
-
-        //region 시간표 중북 검사 및 제거
-        boolean[] notSameFlag = new boolean[simuSamples.size()]; // 초기값 false
-        notSameFlag[0] = true;
-        for(int v = 0; v < simuSamples.size() - 1; v++){
-            for(int b = v + 1; b < simuSamples.size(); b++) {
-                String[][] tableA = simuSamples.get(v);
-                String[][] tableB = simuSamples.get(b);
-                for (int x = 0; x < 5; x++) {
-                    for (int y = 0; y < classTime; y++) {
-                        if (tableA[x][y] != tableB[x][y]) { // 하나라도 불일치하면 플래그를 true로하고 유효 시간표임을 표시. null 에러 회피를 위해 ! .equals이 아니라 != 를 씀
-                            notSameFlag[b] = true;
+        boolean[] notSameFlag = new boolean[1];
+        if(!simuSamples.isEmpty()){
+            notSameFlag = new boolean[simuSamples.size()]; // 초기값 false
+            notSameFlag[0] = true;
+            for(int v = 0; v < simuSamples.size() - 1; v++){
+                for(int b = v + 1; b < simuSamples.size(); b++) {
+                    String[][] tableA = simuSamples.get(v);
+                    String[][] tableB = simuSamples.get(b);
+                    for (int x = 0; x < 5; x++) {
+                        for (int y = 0; y < classTime; y++) {
+                            if (tableA[x][y] != tableB[x][y]) { // 하나라도 불일치하면 플래그를 true로하고 유효 시간표임을 표시. null 에러 회피를 위해 ! .equals이 아니라 != 를 씀
+                                notSameFlag[b] = true;
+                            }
                         }
                     }
                 }
             }
         }
+        else{
+            Toast.makeText(this, R.string.simuErrorMessage, Toast.LENGTH_LONG).show();
+        }
+
+
         final ArrayList<String[][]> dispTableList = new ArrayList<>();
         final ArrayList<int[]> assumptionList = new ArrayList<>();
         ArrayList<String[][]> dispTableList2 = new ArrayList<>();
@@ -349,8 +356,10 @@ public class MyScheduleActivity extends AppCompatActivity {
         boolean GoFlag = true;
         String[] split3;
 
+
         //region 이미 과목이 들어있는지 검사
         String[] split = when.split(" ",0); // 수-1,2 와 목-1,2,3
+
         for(int i=0; i < split.length; i++){
             String[] split2 = split[i].split("-",0); // 수 와 1,2
             switch (split2[0]){

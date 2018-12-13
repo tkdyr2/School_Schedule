@@ -1,31 +1,5 @@
 ﻿[
 {
- "title": "영성생활지도",
-    "serial": "160104",
-    "room": "11",
-    "professor": "문선애",
-    "category": "인성",
-    "major": "신학순결학과",
-    "grade": "신학순결",
-    "point": "0",
-    "when": "월-0 화-0 목-0 금-0",
-    "where": "본관430",
-    "limit": "없음"
-},
-{
-"category": "인성",
-  "major": "신학순결학과",
-    "grade": "신학순결",
-     "title": "영성생활지도",
-    "serial": "160104",
-    "room": "12",
-     "point": "0",
-      "when": "월-0 화-0 목-0 금-0",
-    "professor":"오택용",
-    "where": "본관210",
-    "limit": "없음"
-},
-{
 "category": "현통",
   "major": "교양필수(기초교양)",
     "grade": "공동체인성(현통)",
@@ -673,32 +647,5 @@
     "professor": "권경수",
     "where": "원화502",
     "limit": "100"
-},
-{
-"category": "현통",
-  "major": "신학순결학과",
-    "grade": "신학순결",
-     "title": "원리입문II",
-    "serial": "011016",
-    "room": "11",
-     "point": "2",
-      "when": "월-1,2",
-    "professor": "김민지",
-    "where": "본관430",
-    "limit": "50"
-},
-{
-"category": "현통",
-  "major": "신학순결학과",
-    "grade": "신학순결",
-     "title": "원리입문II",
-    "serial": "011016",
-    "room": "12",
-     "point": "2",
-      "when": "월-1,2",
-    "professor": "강화명",
-    "where": "본관531",
-    "limit": "40"
 }
-
 ]

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SchoolSchedule</string>
+    <string name="app_name">SchoolScheduler</string>
     <string name="result_frame_name">Result of Simulation</string>
     <string name="research_frame_name">Search Classes</string>
     <string name="bucket_frame_name">Selected Classes</string>
@@ -15,4 +15,6 @@
     <string name="introduceMessage">Thinking of a schedule is troublesome,\n\n is not it?\n\nSo this app show you\n\n optimal timetables :)</string>
     <string name="pleaseInputMessage">Please input the number of point you want</string>
     <string name="bucketCleanMessage">Are you sure to delete all subjects in the bucket?</string>
+    <string name="mainTitle">School\nSchedule\nSimulation</string>
+    <string name="simuErrorMessage">Scheduling failed :( \nPlease select more subjects</string>
 </resources>

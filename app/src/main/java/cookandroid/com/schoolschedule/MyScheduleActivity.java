@@ -43,39 +43,56 @@ public class MyScheduleActivity extends AppCompatActivity {
             simuSamples.add(table);           // table를 ArrayList에 추가
         }
 
-        simuSamples = simuSamplesSort(simuSamples); // table의 우선순위를 맺음 (중간 공백 시간, 학점으로)
+        ArrayList<String[][]> newSimuSamples = new ArrayList<>();
+        //region 학점으로 필터
+        boolean[] removeFlag = new boolean[simuSamples.size()];
+        for(int i = 0; i < simuSamples.size(); i++){
+            int[] checkPointAndNumOfClass = getNumPointAndClasses(simuSamples.get(i));
+            if(checkPointAndNumOfClass[0] <= pointLimit && checkPointAndNumOfClass[0] > (pointLimit-3)){
+                removeFlag[i] = false;
+            }
+            else{
+                removeFlag[i] = true;
+            }
+        }
+        for(int g = 0; g < simuSamples.size(); g++){
+            if(!removeFlag[g]) newSimuSamples.add(simuSamples.get(g));
+        }
+        //endregion
+
+        // 중간 공백시간으로 필터
+        simuSamples = simuSamplesSort(newSimuSamples);
         ArrayList<String[][]> simuSamples2 = simuSamplesSort(simuSamples);
 
-        //시간표 중북 검사 및 제거
+        //region 시간표 중북 검사 및 제거
         boolean[] notSameFlag = new boolean[simuSamples.size()]; // 초기값 false
+        notSameFlag[0] = true;
         for(int v = 0; v < simuSamples.size() - 1; v++){
-            for(int b = v + 1; b < simuSamples.size(); b++){
+            for(int b = v + 1; b < simuSamples.size(); b++) {
                 String[][] tableA = simuSamples.get(v);
                 String[][] tableB = simuSamples.get(b);
-                for(int x = 0; x < 5; x++){
-                    for(int y = 0; y < classTime; y++){
-                        if(tableA[x][y] != tableB[x][y]) { // 하나라도 불일치하면 플래그를 true로하고 유효 시간표임을 표시. null 에러 회피를 위해 ! .equals이 아니라 != 를 씀
+                for (int x = 0; x < 5; x++) {
+                    for (int y = 0; y < classTime; y++) {
+                        if (tableA[x][y] != tableB[x][y]) { // 하나라도 불일치하면 플래그를 true로하고 유효 시간표임을 표시. null 에러 회피를 위해 ! .equals이 아니라 != 를 씀
                             notSameFlag[b] = true;
                         }
                     }
                 }
             }
         }
-
-
         final ArrayList<String[][]> dispTableList = new ArrayList<>();
         final ArrayList<int[]> assumptionList = new ArrayList<>();
         ArrayList<String[][]> dispTableList2 = new ArrayList<>();
-
-        //총 학점, 과목 수 표시
         for(int m=0; m < simuSamples2.size(); m++){
             String[][] dispTable2 = simuSamples2.get(m);
             if(notSameFlag[m]) dispTableList2.add(dispTable2);
         }
+        //endregion
+
+        //총 학점, 과목 수 표시
         for(int i = 0; i < dispTableList2.size(); i++) {
             assumptionList.add(getNumPointAndClasses(dispTableList2.get(i)));
         }
-
 
         // 표시를 위해 정리
         for(int i = 0; i < simuSamples.size(); i++){
@@ -85,10 +102,10 @@ public class MyScheduleActivity extends AppCompatActivity {
                     if(dispTable[x][y]!=null) dispTable[x][y] = dispTable[x][y].replace("_", " ");
                 }
             }
-            if(notSameFlag[i]) dispTableList.add(dispTable);
+            if(notSameFlag[i]) {
+                dispTableList.add(dispTable);
+            }
         }
-
-
 
         //region ListView로 시간표 표시
         final ArrayList<TableData> tableData = new ArrayList<>();
@@ -98,7 +115,7 @@ public class MyScheduleActivity extends AppCompatActivity {
         }
 
         // customScheduleAdapter 생성 (R.layout.schedule_layout : 자기가 만든 리스트뷰 레이아웃)
-        final MyScheduleAdapter customScheduleAdapter = new MyScheduleAdapter(this,tableData,R.layout.schedule_layout);
+        final MyScheduleAdapter customScheduleAdapter = new MyScheduleAdapter(this,tableData, R.layout.schedule_layout);
 
         // ListView를 취득
         NonScrollListView myClassListView = findViewById(R.id.nonScrollListView3);
@@ -120,8 +137,8 @@ public class MyScheduleActivity extends AppCompatActivity {
         });
     }
 
-    public  int[] getNumPointAndClasses(String[][] dispTable){
-        int[] tmpNum = {0,0};
+    public int[] getNumPointAndClasses(String[][] dispTable){
+        int[] tmpNum = {0,0};  // [0] = 학점 , [1] = 과목수
         int n = 0;
         String[] titleTmp = new String[5*classTime];
         String[] pointTmp = new String[5*classTime];
@@ -164,10 +181,23 @@ public class MyScheduleActivity extends AppCompatActivity {
                 FileIO fileIO = new FileIO(this);
                 String dataFileName = "registeredData.txt";
                 fileIO.storeClassDataToFile(regiList, dataFileName);
+                // 로컬 파일에 총 학점, 과목수 저장
+                dataFileName = "assumptionData.txt";
+                fileIO.storeClassDataToFile(registeredAssumptionList, dataFileName);
 
+                // 화면 이동
                 Intent registeredIntent = new Intent(MyScheduleActivity.this, RegisteredScheduleActivity.class);
-                registeredIntent.putExtra("assumptionList", registeredAssumptionList);
                 startActivity(registeredIntent);
+
+                // 화면을 이동할 때 registeredClassInfoArray를 초기화
+                for(int h = 0; h < registeredClassInfoArray.size(); h++){
+                    registeredClassInfoArray.remove(h);
+                }
+                // 화면을 이동할 때 registeredAssumptionList를 초기화
+                for(int h = 0; h < registeredAssumptionList.size(); h++){
+                    registeredAssumptionList.remove(h);
+                }
+
                 break;
         }
     }
@@ -196,35 +226,7 @@ public class MyScheduleActivity extends AppCompatActivity {
     }
 
     public ArrayList<String[][]> simuSamplesSort(ArrayList<String[][]> simuSamples){
-
-        //region 학점 수로 Filter한다.
-        int[] point = new int[simuSamples.size()];
-
-        // 각 시간표의 총 학점을 계산
-        for(int m=0; m < simuSamples.size(); m++){
-            String[][] hoge = simuSamples.get(m);
-            for (int x = 0; x < 5; x++){
-                for(int y = 0; y < classTime; y++){
-                    if(hoge[x][y] != null) {
-                        String[] pointTmp = hoge[x][y].split("_", 0);
-                        String tmpPoint = pointTmp[4].replace("학점","");
-                        point[m] += parseInt(tmpPoint)/3;
-                    }
-                }
-            }
-        }
-
-        // 총 학점이 유저 (입력값 - 3)보다 작은 시간표면 삭제
-        int count = 0;
-        for(int l=0; l < simuSamples.size(); l++){
-            if(point[l] > pointLimit - 3){
-                simuSamples.remove(l);
-                count++;
-            }
-        }
-        //endregion
-
-        //region 시간표의 총 공백 시간(emptyCount) 계산
+        // 시간표의 총 공백 시간(emptyCount) 계산
         int[] emptyCount = new int[simuSamples.size()];
         for(int i=0; i < simuSamples.size(); i++){
             String[][] tmp = simuSamples.get(i);
@@ -237,9 +239,8 @@ public class MyScheduleActivity extends AppCompatActivity {
                 }
             }
         }
-        //endregion
 
-        //region 빈시간이 적은 시간표에게 우선순위를 부여한다.
+        // 빈시간이 적은 시간표에게 우선순위를 부여한다.
         simuSamples = quickSort(emptyCount, 0, emptyCount.length - 1, simuSamples);
 
         return simuSamples;

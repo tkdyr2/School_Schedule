@@ -21,9 +21,9 @@ public class TableData {
                   this._theTable[x][y] = tableInfo[x][y];
               }
           }
-
-
     }
+
+
 
     // getter
     public long getId(){ return this._id; }

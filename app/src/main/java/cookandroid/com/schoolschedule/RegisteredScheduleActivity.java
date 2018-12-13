@@ -28,8 +28,12 @@ public class RegisteredScheduleActivity extends AppCompatActivity {
         FileIO fileIO = new FileIO(this);
         ArrayList<String> tmpArr = fileIO.loadClassDataFromFile(dataFileName);
 
+        dataFileName = "assumptionData.txt";
+        ArrayList<String> tmpAssu = fileIO.loadClassDataFromFile(dataFileName);
+
+
         // frame 전환
-        if(tmpArr.isEmpty() || tmpArr.size() == 0){     // 로컬 파일이 비어있을 때 (등록된 시간표가 없을 때)
+        if(tmpArr.isEmpty()){     // 로컬 파일이 비어있을 때 (등록된 시간표가 없을 때)
             contentsFrame.setVisibility(View.INVISIBLE);
             emptyFrame.setVisibility(View.VISIBLE);
         }
@@ -37,22 +41,15 @@ public class RegisteredScheduleActivity extends AppCompatActivity {
             emptyFrame.setVisibility(View.INVISIBLE);
             contentsFrame.setVisibility(View.VISIBLE);
 
-            Intent thisintent = getIntent();
-            ArrayList<String> assumptionList = thisintent.getStringArrayListExtra("assumptionList");
-
             ArrayList<int[]> assu = new ArrayList<>();
 
-            if(assumptionList != null) {
-                for (int i = 0; i < assumptionList.size(); i++) {
-                    String hoge = assumptionList.get(i);
+            if(tmpAssu != null) {
+                for (int i = 0; i < tmpAssu.size(); i++) {
+                    String hoge = tmpAssu.get(i);
                     String[] hoge2 = hoge.split(",", 0);
                     int[] hoge3 = {parseInt(hoge2[0]), parseInt(hoge2[1])};
                     assu.add(hoge3);
                 }
-            }
-            else{
-                //int[] hoge = {0,0};
-                //assu.add(hoge);
             }
 
             ArrayList<String[][]> tableList = new ArrayList<>();
@@ -75,8 +72,6 @@ public class RegisteredScheduleActivity extends AppCompatActivity {
             //region ListView로 시간표 표시
             final ArrayList<TableData> tableData = new ArrayList<>();
             for(int i = 0; i < tableList.size(); i++) {
-                int[] hoge = {0,0};
-                assu.add(hoge);
                 TableData data = new TableData(tableList.get(i), assu.get(i));
                 tableData.add(data);
             }
@@ -116,6 +111,8 @@ public class RegisteredScheduleActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         FileIO fileIO = new FileIO(RegisteredScheduleActivity.this);
                         String dataFileName = "registeredData.txt";
+                        fileIO.resetClassDataFile(dataFileName);
+                        dataFileName = "assumptionData.txt";
                         fileIO.resetClassDataFile(dataFileName);
                         reload();
                     }

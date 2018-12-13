@@ -51,8 +51,8 @@ public class RegisteredScheduleActivity extends AppCompatActivity {
                 }
             }
             else{
-                int[] hoge = {0,0};
-                assu.add(hoge);
+                //int[] hoge = {0,0};
+                //assu.add(hoge);
             }
 
             ArrayList<String[][]> tableList = new ArrayList<>();
@@ -75,6 +75,8 @@ public class RegisteredScheduleActivity extends AppCompatActivity {
             //region ListView로 시간표 표시
             final ArrayList<TableData> tableData = new ArrayList<>();
             for(int i = 0; i < tableList.size(); i++) {
+                int[] hoge = {0,0};
+                assu.add(hoge);
                 TableData data = new TableData(tableList.get(i), assu.get(i));
                 tableData.add(data);
             }

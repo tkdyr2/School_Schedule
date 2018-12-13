@@ -105,9 +105,6 @@ public class BucketActivity extends AppCompatActivity {
     }
 
 
-
-
-
     public void reload() {
         Intent intent = getIntent();
         overridePendingTransition(0, 0);

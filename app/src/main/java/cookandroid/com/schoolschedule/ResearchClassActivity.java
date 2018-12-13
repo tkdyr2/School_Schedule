@@ -92,6 +92,8 @@ public class ResearchClassActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_research:
 
+
+
                 //region 가목조회 및 ListView 표시
 
                 // 유정 입력 값 병수
@@ -158,18 +160,21 @@ public class ResearchClassActivity extends AppCompatActivity {
                 myClassListView.setAdapter(customAdapter);
 
 
-
-                // 아이템 선택 동작
+                // 길게 누르기 아이템 선택 동작
                 myClassListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                        selectedClassInfoArray.add(tmpArr2.get(pos));
-                        new QuickToastTask(getApplicationContext(), R.string.toastMessageSelected).execute();
-
+                        String[] target = tmpArr2.get(pos);
+                        if(check(target)) {
+                            selectedClassInfoArray.add(target);
+                            new QuickToastTask(getApplicationContext(), R.string.toastMessageSelected).execute();
+                        }
+                        else{
+                            new QuickToastTask(getApplicationContext(), R.string.toastMessageSelectedFalse).execute();
+                        }
                         return false;
                     }
                 });
-
 
                 //region 숨긴 장바구니 버튼 표시
                 Button btn_bucket = this.findViewById(R.id.btn_bucket);
@@ -181,6 +186,51 @@ public class ResearchClassActivity extends AppCompatActivity {
         }
     }
 
+    public boolean check(String[] target){
+        boolean[] flag1 = new boolean[selectedClassInfoArray.size()];
+        boolean returnValue = true;
+
+        // 선택 과목 리스트가 비어있지 않다면
+        if(!selectedClassInfoArray.isEmpty()){
+            for(int m = 0; m < selectedClassInfoArray.size(); m++){
+                String[] tmp = selectedClassInfoArray.get(m);
+                for(int j = 0; j < tmp.length; j++) {
+                    if (!tmp[j].equals(target[j])) {
+                        flag1[m] = true;
+                    }
+                }
+                System.out.println("flag1 : " + flag1[m]);
+            }
+            for(int n = 0; n < flag1.length; n++){
+                if(!flag1[n]) returnValue = false;    // 하나라도 false가 있으면 false를 돌려줌
+            }
+        }
+
+        // 로컬 파일에서 장바구니 리스트 읽기
+        FileIO fileIO = new FileIO(this);
+        String dataFileName = "bucketData.txt";
+        ArrayList<String> checkList = fileIO.loadClassDataFromFile(dataFileName);
+
+        boolean[] flag2 = new boolean[checkList.size()];
+
+        // 파일이 비어있지 않다면 파일 내용과 비교
+        if(!checkList.isEmpty()){
+            for(int i = 0; i < checkList.size(); i++){
+                String[] tmp = checkList.get(i).split("_",0);
+                for(int j = 0; j < tmp.length; j++){
+                    if(!tmp[j].equals(target[j])) {
+                        flag2[i] = true;
+                    }
+                }
+            }
+            for(int l = 0; l < flag2.length; l++){   // 하나라도 false가 있으면 false를 돌려줌
+                if(!flag2[l]) returnValue = false;
+            }
+        }
+
+        System.out.println("returnValue : " + returnValue);
+        return returnValue;
+    }
 
 
     public ArrayList<String> getStringArray(){
@@ -196,6 +246,9 @@ public class ResearchClassActivity extends AppCompatActivity {
                      this.major[i], this.grade[i],this.point[i],
                      this.when[i], this.where[i], this.limit[i] */
 
+        // 장바구니 과목 초기화
+        selectedClassInfoArray = new ArrayList<>();
+
         return tmpString2;
     }
 
@@ -203,6 +256,8 @@ public class ResearchClassActivity extends AppCompatActivity {
     public void onBucketButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bucket:
+
+
                 // 로컬 파일에 장바구니 리스트 저장
                 FileIO fileIO = new FileIO(this);
                 String dataFileName = "bucketData.txt";
@@ -210,7 +265,6 @@ public class ResearchClassActivity extends AppCompatActivity {
 
                 // 장바구니 화면에 이동
                 Intent bucketIntent = new Intent(ResearchClassActivity.this, BucketActivity.class);
-//                bucketIntent.putExtra("selectedClassInfo", getStringArray());
                 startActivity(bucketIntent);
                 break;
         }

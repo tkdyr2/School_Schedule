@@ -7,6 +7,7 @@
     <string name="RegisteredSchedule_frame_name">マイ時間割</string>
     <string name="simulation">シミュレーション</string>
     <string name="toastMessageSelected">選択された科目がカゴに追加されました</string>
+    <string name="toastMessageSelectedFalse">選択された科目はすでにカゴにあります</string>
     <string name="toastMessageRegistered">選択された時間割がマイ時間割に登録されました</string>
     <string name="goToRegistered">マイ時間割 確認</string>
     <string name="emptyMessage1">登録された時間割がありません</string>
